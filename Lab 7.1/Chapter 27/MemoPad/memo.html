@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Memo Pad</title>
+    <link rel="stylesheet" href="memoStyles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Memo Pad</h1>
+        </header>
+
+        <main>
+            <div class="page-indicator">
+                <span id="pageDisplay">Page 1 of 50</span>
+            </div>
+
+            <textarea id="memoText" placeholder="Type your memo here..."></textarea>
+
+            <div class="button-row">
+                <button id="saveBtn" class="primary">Save</button>
+                <button id="revertBtn">Revert</button>
+            </div>
+
+            <div class="nav-row">
+                <button id="prevBtn">← Previous</button>
+                <span id="pageNum">1</span>
+                <button id="nextBtn">Next →</button>
+            </div>
+        </main>
+
+        <footer>
+            <small>Changes are saved only when you press Save.</small>
+        </footer>
+    </div>
+
+    <script src="memoJS.js"></script>
+</body>
+
+</html>

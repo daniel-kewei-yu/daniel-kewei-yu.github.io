@@ -1,0 +1,793 @@
+/*
+* Author: Daniel Yu
+* Date: 2026-03-18
+* Description: Styles for the 2D Perspective Platformer game "VANTAGE".
+* Pixel art aesthetic,responsive layout, and positioning for all UI elements 
+* including splash screen, game canvas, and control buttons.
+*/
+
+/* Pixel font import from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Global reset – remove default margins/padding and use border-box sizing for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive, system-ui, sans-serif;
+}
+
+/* Body background and centering */
+body {
+    background: #1e2f4a;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+}
+
+
+/* ----- Splash Screen ----- */
+.splash {
+    flex: 1;
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    background-image: url('../imagesPHPAssign/White_Brick.png');
+    background-repeat: repeat;
+    position: relative;
+    z-index: 1;
+}
+
+/* White overlay to lighten the brick background */
+.splash::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: -1;
+}
+
+/* Splash screen title */
+.splash h1 {
+    font-size: 35px;
+    color: #2c4f7a;
+    text-shadow: 4px 4px 0 #b0c4de;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    word-break: break-word;
+    position: relative;
+    z-index: 1;
+}
+
+/* Canvas for splash animation */
+#splashCanvas {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    background: #f5f5f7;
+    margin-bottom: 20px;
+}
+
+/* Splash message (e.g., "LOADING . . ." then "READY?") */
+#splashMsg {
+    font-size: 21px;
+    color: #2c4f7a;
+    margin-bottom: 20px;
+}
+
+/* Start button on splash screen */
+#startBtn {
+    background: #3a6ea5;
+    color: white;
+    border: none;
+    font-size: 22px;
+    padding: 12px 30px;
+    border-radius: 0;
+    cursor: pointer;
+    transition: 0.1s ease;
+}
+
+#startBtn:active {
+    transform: translateY(4px);
+    /* Slight press‑down effect */
+}
+
+/* Utility class to hide elements (display: none !important to override other rules) */
+.hidden {
+    display: none !important;
+}
+
+/* ----- Game Container ----- */
+#gameContainer {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: calc(100vh - 10px);
+    background-image: url('../imagesPHPAssign/White_Brick.png');
+    background-repeat: repeat;
+    border-radius: 0;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+/* Decorative inner border (image) placed on top of the brick background */
+#gameContainer::before {
+    content: '';
+    position: absolute;
+    top: 35px;
+    right: 35px;
+    bottom: 35px;
+    left: 35px;
+    background-image: url('../imagesPHPAssign/border.png');
+    z-index: 1;
+    pointer-events: none;
+    /* Let clicks pass through to buttons/canvas */
+}
+
+/* Ensure all direct children appear above the decorative border */
+#gameContainer>* {
+    position: relative;
+    z-index: 2;
+}
+
+/* ----- Header (level info, stars, restart button) ----- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    color: #1e3b5c;
+    flex-wrap: wrap;
+    gap: 4px;
+    font-size: 10px;
+    flex-shrink: 0;
+    padding: 6px 10px;
+    border: 2px solid #1e3b5c;
+    background-image: url('../imagesPHPAssign/White_Brick.png');
+    background-repeat: repeat;
+    border-radius: 0;
+    position: relative;
+    z-index: 3;
+}
+
+/* Light overlay inside header for readability */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    z-index: -1;
+}
+
+header>* {
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+}
+
+/* Level indicator (e.g., "level 1 / 3") */
+#levelStatus {
+    background: #1e3b5c;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 0;
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+/* Restart level button (circular arrow) */
+#restartBtn {
+    background: #ffe3c7;
+    border: 2px solid white;
+    color: #5f4632;
+    width: 28px;
+    height: 28px;
+    border-radius: 0;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+#restartBtn:active {
+    transform: translateY(3px);
+}
+
+/* ----- Level Navigation Buttons (previous/next) ----- */
+#prevLevelBtn,
+#nextLevelBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 0;
+    background: #ffe3c7;
+    border: 2px solid white;
+    color: #574130;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+}
+
+#prevLevelBtn {
+    left: 50px;
+}
+
+#nextLevelBtn {
+    right: 50px;
+}
+
+/* Press effect: move down slightly while keeping vertical centering */
+#prevLevelBtn:active,
+#nextLevelBtn:active {
+    transform: translateY(-50%) translateY(3px);
+}
+
+/* ----- Canvas Wrapper (fixed aspect ratio) ----- */
+.canvas-wrapper {
+    width: 100%;
+    max-width: 400px;
+    height: 700px;
+    /* Fixed height to match canvas drawing buffer */
+    margin: 0 auto 4px auto;
+    background: #c0d0e2;
+    border-radius: 0;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+/* Game canvas itself */
+#gameCanvas {
+    width: 400px;
+    height: 700px;
+    display: block;
+    background: #c0d0e2;
+    cursor: grab;
+    /* Indicates objects can be grabbed */
+    touch-action: none;
+    /* Prevent browser scrolling on canvas */
+    border-radius: 0;
+}
+
+/* ===== Selection Controls (zoom in/out, rotate) ===== */
+#selectionControls {
+    position: absolute;
+    bottom: 95px;
+    left: 35px;
+    display: flex;
+    gap: 6px;
+    z-index: 30;
+}
+
+/* Shared style for all selection control buttons */
+#selectionControls .control-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 0;
+    background: #ffe3c7;
+    border: 2px solid white;
+    color: #574130;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    touch-action: manipulation;
+}
+
+#selectionControls .control-btn:active {
+    transform: translateY(3px);
+}
+
+/* ===== Jump Button ===== */
+#jumpBtn {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    color: white;
+    font-size: 34px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    touch-action: manipulation;
+    backdrop-filter: blur(2px);
+    /* Slight glass effect */
+    z-index: 40;
+}
+
+#jumpBtn:active {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(0.95);
+}
+
+/* ===== Move Buttons (left/right) ===== */
+#moveLeftBtn,
+#moveRightBtn {
+    position: absolute;
+    bottom: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    touch-action: manipulation;
+    backdrop-filter: blur(2px);
+    z-index: 40;
+}
+
+#moveLeftBtn {
+    left: 30px;
+}
+
+#moveRightBtn {
+    left: 90px;
+}
+
+/* ===== Help Button ===== */
+#helpBtn {
+    position: absolute;
+    bottom: 30px;
+    left: 150px;
+    width: 42px;
+    height: 42px;
+    border-radius: 0;
+    background: #ffe3c7;
+    border: 2px solid white;
+    font-size: 20px;
+    font-weight: bold;
+    color: #574130;
+    cursor: pointer;
+    transition: 0.1s;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#helpBtn:active {
+    transform: translateY(3px);
+}
+
+/* ----- Help Panel (pop‑up instructions) ----- */
+#helpPanel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    max-width: 80%;
+    background: #fef9e6;
+    border-radius: 0;
+    padding: 20px;
+    border: 3px solid #c0b28a;
+    color: #2e3f2e;
+    font-size: 14px;
+    line-height: 1.4;
+    z-index: 200;
+}
+
+/* ----- Pause Overlay (darkens game when help is open) ----- */
+#pauseOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    z-index: 90;
+    border-radius: 0;
+    pointer-events: none;
+}
+
+/* ----- Game Over / History Screen ----- */
+#gameover {
+    background: #bcd0e6;
+    border-radius: 0;
+    padding: 12px;
+    text-align: center;
+    border: 3px solid white;
+    margin-top: 8px;
+    flex-shrink: 0;
+}
+
+/* Container for localStorage history display */
+#history {
+    background: white;
+    border-radius: 0;
+    padding: 6px;
+    margin: 8px 0;
+    max-height: 90px;
+    overflow-y: auto;
+    font-size: 10px;
+}
+
+/* Replay button on game‑over screen */
+#replayBtn {
+    background: #3a6ea5;
+    color: white;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Feedback div; used for level complete messages and level 3 pendulum activated message */
+#feedback {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(233, 196, 106, 0.9);
+    /* semi‑transparent for visibility over canvas */
+    color: #3d2b1a;
+    padding: 8px 16px;
+    border-radius: 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 10px;
+    z-index: 200;
+    /* above canvas and most UI */
+    white-space: nowrap;
+    /* keep message on one line */
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+    border: 2px solid #b08e5a;
+    pointer-events: none;
+    /* optional: allows clicks to pass through to canvas/buttons */
+}
+
+/* ----- Star Icons & Best Time ----- */
+.star {
+    width: 14px;
+    height: 14px;
+}
+
+#quitBtn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #aa5555;
+    color: white;
+    border: none;
+    font-size: 14px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', monospace;
+    z-index: 1000;
+}
+
+#quitBtn:active {
+    transform: translateY(2px);
+}
+
+#bestTime {
+    font-size: 10px;
+    margin-left: 4px;
+}
+
+/* ----- Media Query for Narrow Screens ----- */
+@media (max-width: 550px) {
+    #gameContainer {
+        padding: 20px;
+    }
+
+    /* Adjust decorative border to match new padding */
+    #gameContainer::before {
+        top: 20px;
+        right: 20px;
+        bottom: 20px;
+        left: 20px;
+    }
+
+    /* Smaller navigation buttons */
+    #prevLevelBtn,
+    #nextLevelBtn {
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+    }
+
+    #prevLevelBtn {
+        left: 30px;
+    }
+
+    #nextLevelBtn {
+        right: 30px;
+    }
+
+    /* Selection controls closer to bottom */
+    #selectionControls {
+        bottom: 70px;
+        left: 20px;
+    }
+
+    #selectionControls .control-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+
+    /* Jump button smaller and closer to edge */
+    #jumpBtn {
+        bottom: 15px;
+        right: 15px;
+        width: 50px;
+        height: 50px;
+        font-size: 28px;
+    }
+
+    /* Move buttons smaller and closer to edge */
+    #moveLeftBtn,
+    #moveRightBtn {
+        bottom: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+    }
+
+    #moveLeftBtn {
+        left: 15px;
+    }
+
+    #moveRightBtn {
+        left: 65px;
+    }
+
+    /* Help button smaller */
+    #helpBtn {
+        bottom: 15px;
+        left: 115px;
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+
+    /* Make canvas wrapper scale with viewport height while preserving aspect ratio */
+    .canvas-wrapper {
+        height: auto;
+        max-height: 70vh;
+        width: auto;
+        max-width: 100%;
+        aspect-ratio: 400 / 700;
+    }
+
+    #gameCanvas {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* ===== Login Form ===== */
+.login-form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255,255,255,0.9);
+    border: 3px solid #c0b28a;
+    text-align: center;
+}
+.login-form h2 {
+    margin-bottom: 20px;
+    color: #2c4f7a;
+    font-size: 18px;
+}
+.login-form .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+.login-form label {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: #1e3b5c;
+}
+.login-form input {
+    width: 100%;
+    padding: 8px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    border: 2px solid #c0b28a;
+    background: #fff;
+    box-sizing: border-box;
+}
+.login-form button {
+    background: #3a6ea5;
+    color: white;
+    border: none;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', monospace;
+    margin-top: 10px;
+}
+.login-form button:active {
+    transform: translateY(2px);
+}
+.login-form .error {
+    color: #aa5555;
+    font-size: 10px;
+    margin-top: 10px;
+}
+.login-form .hidden {
+    display: none;
+}
+.login-form .sub-message {
+    font-size: 10px;
+    margin-bottom: 20px;
+}
+
+/* ===== Result Box (login.php) ===== */
+.result-box {
+    max-width: 500px;
+    margin: 100px auto;
+    padding: 30px;
+    background: rgba(255,255,255,0.9);
+    border: 3px solid #c0b28a;
+    text-align: center;
+}
+.result-box .message {
+    font-size: 14px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+.result-box a {
+    display: inline-block;
+    background: #3a6ea5;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+}
+.result-box a:active {
+    transform: translateY(2px);
+}
+
+/* ===== Quit Button ===== */
+#quitBtn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #aa5555;
+    color: white;
+    border: none;
+    font-size: 14px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', monospace;
+    z-index: 1000;
+}
+
+#quitBtn:active {
+    transform: translateY(2px);
+}
+
+/* ===== Leaderboard Styles ===== */
+.leaderboard-container {
+    max-width: 800px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    border: 3px solid #c0b28a;
+    padding: 20px;
+    font-family: 'Press Start 2P', monospace;
+    margin: 20px auto;
+}
+
+.leaderboard-container h1,
+.leaderboard-container h2 {
+    text-align: center;
+    color: #2c4f7a;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.leaderboard-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    font-size: 10px;
+}
+
+.leaderboard-container th,
+.leaderboard-container td {
+    border: 1px solid #c0b28a;
+    padding: 12px 8px;
+    text-align: left;
+}
+
+.leaderboard-container th {
+    background: #e9c46a;
+    color: #2c4f7a;
+}
+
+.stats-box {
+    background: #f0f0f0;
+    padding: 15px;
+    margin-bottom: 20px;
+    font-size: 10px;
+    line-height: 1.8;
+}
+
+.stats-box h3 {
+    font-size: 12px;
+    margin: 15px 0 10px;
+}
+
+.stats-box p {
+    margin: 10px 0;
+}
+
+.button {
+    display: inline-block;
+    background: #3a6ea5;
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    font-size: 10px;
+    margin: 10px 5px;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+}
+
+.button:active {
+    transform: translateY(2px);
+}
+
+.message {
+    text-align: center;
+    margin: 10px 0;
+    color: #2c4f7a;
+    font-size: 10px;
+}
+
+.error {
+    color: #aa5555;
+}

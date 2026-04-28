@@ -1,0 +1,218 @@
+<!doctype html>
+<!--
+Description: Learning Journal for CS 1XD3 and Computer Science Level I
+Author: Daniel Yu
+Date: January 2026
+-->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Learning Journal | Daniel Yu</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <div id="header" class="container">
+        <header>
+            <h1>Learning Journal</h1>
+        </header>
+    </div>
+
+    <div id="nav" class="container">
+        <nav>
+            <ul>
+                <li><a href="index.html">Back to Home</a></li>
+                <li><a href="work.html">Course Work</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="content" class="container">
+        <main>
+            <section id="journal-entries">
+                <h2>Weekly Reflections</h2>
+
+                <article class="journal-entry">
+                    <h3>Week 12: PHP Session Management & Course Reflection</h3>
+                    <p class="date">March 30, 2026</p>
+                    <p>
+                        This week we dived into PHP session management – a topic that finally made the "statelessness"
+                        of HTTP click for me. Building the three‑page guessing game and the slot machine with
+                        persistent credits showed how server‑side sessions let us maintain state across page loads and
+                        AJAX requests without exposing anything to the client. It felt like giving the server a memory,
+                        which is both powerful and (if you're not careful) a security responsibility.
+                    </p>
+                    <p>
+                        <strong>Best skills I've developed this term:</strong><br>
+                        Looking back over the entire course, the most valuable skills I've gained are not just syntax
+                        but ways of thinking. <strong>Separation of concerns</strong> (HTML for structure, CSS for
+                        presentation, JavaScript for behaviour, PHP for logic) has become second nature. I've also
+                        learned to <strong>think in terms of data flow</strong> – how information moves from a form,
+                        to the server, to a database, and back to the screen. This mindset applies far beyond web
+                        development.
+                    </p>
+                    <p>
+                        <strong>Most interesting concept:</strong><br>
+                        I found <strong>AJAX and asynchronous programming</strong> the most exciting. The idea that a
+                        page can fetch data in the background and update itself without reloading feels like magic, but
+                        understanding the mechanics (promises, callbacks, fetch API) gave me a deep appreciation for
+                        modern web apps. The password strength checker and city search we built really demonstrated how
+                        AJAX makes interfaces feel responsive and professional.
+                    </p>
+                    <p>
+                        <strong>Career thoughts:</strong><br>
+                        Before this course, I wasn't sure if web development would be a career path I'd enjoy. Now I
+                        can see myself doing it – but not as a pure front‑end or back‑end specialist. I'm drawn to the
+                        <strong>full‑stack</strong> perspective: the satisfaction of seeing a complete feature come to
+                        life, from the UI all the way down to the database. The course has shown me that web development
+                        is a rich field with endless opportunities to learn, whether in performance optimisation,
+                        security, or user experience.
+                    </p>
+                    <p>
+                        <strong>What I want to learn next:</strong><br>
+                        I'd like to go deeper into <strong>security practices</strong> – proper password hashing,
+                        preventing SQL injection (though we touched on PDO), and XSS protection. I'm also curious about
+                        <strong>modern frameworks</strong> like React or Vue, and how they integrate with back‑end
+                        technologies. Finally, I want to explore <strong>API design</strong> – building RESTful
+                        endpoints that can serve both web and mobile clients. The journey feels like it's just begun,
+                        and I'm excited to keep building.
+                    </p>
+                </article>
+
+                <article class="journal-entry">
+                    <h3>Week 9: Server-Side Scripting with PHP</h3>
+                    <p class="date">March 9, 2026</p>
+                    <p>
+                        This week we crossed the line from client-side to server-side programming using PHP.
+                        After building the slot machine, tip calculator, and multiplication table, I've started
+                        to appreciate the fundamental differences between the two sides.
+                    </p>
+                    <p>
+                        <strong>Which do I find more rewarding so far?</strong><br>
+                        Honestly, client-side scripting (JavaScript) feels more immediately gratifying because you
+                        see changes happen instantly without a page reload. Manipulating the DOM, handling events,
+                        and creating animations gives a very direct sense of interaction. However, server-side
+                        scripting has its own reward: the ability to process data securely, validate input, and
+                        generate custom content that is invisible to the user until it's fully formed. There's a
+                        satisfaction in knowing that the logic is protected from the client's view.
+                    </p>
+                    <p>
+                        <strong>Most important role of server-side scripting in a full-stack app?</strong><br>
+                        The server's primary job is to be the gatekeeper of data and business logic. It handles
+                        sensitive information (like credit card numbers), enforces validation that can't be
+                        bypassed by the client, and talks to the database. Without the server, any user could
+                        manipulate the front-end and potentially corrupt the data. In the tip calculator, for
+                        example, the server does the final validation and calculation - even if someone disables
+                        JavaScript, the checks still happen.
+                    </p>
+                    <p>
+                        <strong>Most important role of client-side scripting?</strong><br>
+                        The client side is all about user experience. It provides immediate feedback, smooth
+                        interactions, and reduces unnecessary server requests. In the multiplication table
+                        generator, client-side validation (like <code>required</code> and <code>min</code> attributes)
+                        catches errors before the form is even submitted, saving time and bandwidth. Ultimately,
+                        the client makes the app feel alive, while the server keeps it trustworthy.
+                    </p>
+                    <p>
+                        Combining both sides feels like building a complete system - each has a distinct and
+                        essential role.
+                    </p>
+                </article>
+
+                <article class="journal-entry">
+                    <h3>Week 7: Canvas, Classes, DOM, and Local Storage</h3>
+                    <p class="date">Feb 23, 2026</p>
+                    <p>
+                        The last few weeks have been intense but incredibly rewarding. We've covered a lot of ground:
+                        drawing on the canvas, object-oriented programming with classes and methods, advanced DOM
+                        manipulation, and client-side storage with localStorage. Stepping back, I can see how these
+                        pieces are starting to fit together to build real, interactive web applications.
+                    </p>
+                    <p>
+                        <strong>Most Challenging: Classes and the 'this' Keyword</strong><br>
+                        For me, the most challenging concept has been mastering JavaScript classes and the behavior of
+                        the <code>this</code> keyword inside methods. While the idea of a class as a blueprint makes
+                        sense, keeping track of which object <code>this</code> refers to—especially in event handlers or
+                        when passing methods as callbacks—has tripped me up several times. I've had to be very
+                        deliberate about using arrow functions or binding methods to preserve the correct context. It's
+                        a nuanced part of the language, but I can see that understanding it is crucial for writing
+                        robust, object-oriented code.
+                    </p>
+                    <p>
+                        <strong>Easiest to Work With: Canvas Drawing</strong><br>
+                        Surprisingly, the canvas API has been the most intuitive for me. Maybe because it's visual and
+                        immediate: you call <code>fillRect</code> or <code>arc</code>, and something appears on the
+                        screen. The coordinate system is straightforward, and the cause-and-effect nature of drawing
+                        commands makes debugging feel more concrete. Building the 500-ball animation and seeing them
+                        bounce and respond to gravity was not only fun but also gave me a real sense of accomplishment.
+                        It felt like I was creating something alive.
+                    </p>
+                    <p>
+                        <strong>Most Fundamental for My Future Career: Object-Oriented Programming</strong><br>
+                        While canvas is enjoyable, I believe object-oriented programming (OOP) will be the most
+                        fundamental concept for my future as a computer scientist. OOP is a paradigm that extends far
+                        beyond web development—it's used in virtually every area of software engineering, from game
+                        development to enterprise applications. Learning to design classes, encapsulate data, and model
+                        real-world entities as objects teaches you how to think about problems in a modular, reusable
+                        way. Even if I end up using a different language or framework, the principles of OOP will remain
+                        applicable. It's a way of structuring thought, not just code.
+                    </p>
+                    <p>
+                        Looking ahead, I'm excited to combine all these pieces—canvas for graphics, classes for
+                        organization, DOM for interaction, and localStorage for persistence—into more complex projects.
+                        There's still a lot to learn, but for the first time, I feel like I'm starting to think like a
+                        developer.
+                    </p>
+                </article>
+
+                <article class="journal-entry">
+                    <h3>Week 5: Exploring Client-Side JavaScript</h3>
+                    <p class="date">Feb 2, 2026</p>
+                    <p>
+                        This week I've been building small JavaScript web apps and exploring how they interact with the
+                        Document Object Model (DOM). I noticed an interesting distinction in how the browser handles
+                        updates.
+                        While editing the HTML typically causes a full page refresh and a visible flicker, my JavaScript
+                        changes allow
+                        for instant, live patches. This means I can manipulate the page content and logic in real-time
+                        while keeping
+                        the application state perfectly intact without a reload.
+                    </p>
+                </article>
+
+                <article class="journal-entry">
+                    <h3>Week 3: Starting the Web Design Process</h3>
+                    <p class="date">January 19, 2026</p>
+                    <p>
+                        Today I focused on connecting my CSS to multiple HTML pages. I learned that
+                        keeping the design consistent across index.html, work.html, journal.html, and about.html
+                        makes the whole portfolio feel more professional. I also experimented with
+                        removing default browser styling like blue links and underlines, as well as transitions.
+                    </p>
+                </article>
+
+                <article class="journal-entry">
+                    <h3>Week 2: Foundations and Setup</h3>
+                    <p class="date">January 12, 2026</p>
+                    <p>
+                        All of this is new. This week was my first deep dive into the
+                        foundations of <strong>CS 1XD3</strong>. My goal for this
+                        term is to move beyond basic placeholders to a fully functional site.
+                    </p>
+                </article>
+            </section>
+        </main>
+    </div>
+
+    <div id="footer" class="container">
+        <footer>
+            <p>&copy; 2026 Daniel Yu | McMaster University</p>
+        </footer>
+    </div>
+
+</body>
+
+</html>

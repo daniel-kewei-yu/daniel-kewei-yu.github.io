@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Arithmetic Quiz</title>
+</head>
+<body>
+    <h1>Are You Ready For A Math Quiz?</h1>
+
+    <script>
+        function RandomNumber() {
+            return Math.floor(Math.random() * 201) - 100;
+        }
+
+        function userQuestion() {
+            let num1 = RandomNumber();
+            let num2 = RandomNumber();
+            let correctAnswer = num1 + num2;
+            let userAnswer = parseInt(prompt("What is " + num1 + " + " + num2 + "?"));
+
+            if (userAnswer === correctAnswer) {
+                alert("Correct! Well done.");
+            } else {
+                alert("Oops! Try again.");
+                userQuestion();
+            }
+        }
+
+        userQuestion();
+
+        if (confirm('Would you like another question?')) {
+            userQuestion();
+        } else {
+            alert("Thankyou! Goodbye!");
+        }
+    </script>
+</body>
+</html>

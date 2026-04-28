@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Paint App • brushes & modifiers</title>
+    <link rel="stylesheet" href="paintStyles.css">
+</head>
+
+<body>
+    <h1>Paint :)</h1>
+    <div class="canvas-wrapper">
+        <canvas id="paintCanvas" width="800" height="500"></canvas>
+    </div>
+
+    <div class="toolbar">
+        <button id="brushLargeCircle">● large circle</button>
+        <button id="brushSmallCircle">○ small circle</button>
+        <button id="brushLargeSquare">■ large square</button>
+        <button id="brushSmallSquare">□ small square</button>
+
+        <div class="color-picker">
+            <label for="colorInput">🎨</label>
+            <input type="color" id="colorInput" value="#000000">
+        </div>
+
+        <button id="clearButton">🗑 clear canvas</button>
+    </div>
+
+    <div class="status" id="brushStatus">small circle · #000000</div>
+
+    <div class="hint">
+        <kbd>drag</kbd> to draw; <kbd>ctrl</kbd> + drag = erase square; <kbd>alt</kbd> + drag = double brush size;
+        <kbd>backspace</kbd> / <kbd>delete</kbd> clear canvas with confirmation
+    </div>
+
+    <script src="paintJS.js"></script>
+</body>
+
+</html>

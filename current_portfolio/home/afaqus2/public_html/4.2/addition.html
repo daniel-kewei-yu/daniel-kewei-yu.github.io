@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+Finish this program by filling in JavaScript that checks if the user’s answer to
+the addition question is correct, and then display “Correct” or “Incorrect” on the
+web page by changing the innerHTML of the <h1> element.
+
+
+Sam Scott, McMaster University, 2025
+-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>addition</title>
+
+
+  <style>
+     .correct {
+        color: green;
+        font-size: 48px;
+        text-align: center;
+     }
+
+
+     .incorrect {
+        color: red;
+        font-size: 48px;
+        text-align: center;
+     }
+
+
+     .invalid {
+        background-color: red;
+        border: 6px solid black;
+        color: white;
+        padding: 20px;
+        text-align: center;
+     }
+  </style>
+   <script type="text/javascript">
+      function addition() {
+          let op1 = Math.floor(Math.random() * 200 - 100);
+          let op2 = Math.floor(Math.random() * 200 - 100);
+          let answer = prompt("What is " + op1 + " + " + op2 + "?");
+          let resultElement = document.getElementById("result");
+      
+          resultElement.classList.remove("correct", "incorrect", "invalid");
+
+
+          if (answer == null || answer.trim() == "" | isNaN(answer)) {
+           resultElement.innerHTML = "Invalid input";
+           resultElement.classList.add("invalid");
+          }
+          else if (Number (answer) == op1 + op2) {
+              resultElement.innerHTML = "Correct";
+              resultElement.classList.add("correct");
+          } else {
+              resultElement.innerHTML = "Incorrect";
+              resultElement.classList.add("incorrect");
+          }
+      }
+  </script>
+</head>
+
+
+
+
+<body>
+  <p>Run addition() from the console to get going.</p>
+  <h1 id="result"></h1>
+</body>
+</html>

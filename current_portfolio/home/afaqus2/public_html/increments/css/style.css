@@ -1,0 +1,440 @@
+/*
+Name: Shiza Afaqui & Leena Matheen 
+Date: February 27, 2026
+Description: CSS file for the Shawarma Clicker game. It controls the visual styling of the game, including 
+the main layout, colors, buttons, scoreboard display, and rewards display. 
+*/
+
+
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+
+body {
+   height: 100vh;
+   background-color: rgb(255, 208, 107);
+   justify-content: center;
+   background-image: url("../images/wood.png");
+   background-size: contain;
+}
+
+#Total {
+   display: flex;
+   flex-direction: row;
+   width: 100%;
+   height: 100%;
+}
+
+/* ── Scoreboard ── */
+#ScoreboardSection {
+   width: 30%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   overflow: hidden;
+}
+
+#Scoreboard {
+   position: absolute;
+   z-index: 2;
+   width: 70%;
+   height: 75%;
+   top: 12%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: flex-start;
+   padding: 10px;
+   top: 24%;
+   right:32%;
+}
+
+#ScoreboardImage {
+   background-image: url('../images/pillar1.png');
+   background-size: 100% 100%;
+   background-position: center;
+   background-repeat: no-repeat;
+   position: absolute;
+   z-index: 1;
+   width: 100%;
+   height: 100%;
+}
+
+.score-label {
+   font-family: 'Caesar Dressing', serif;
+   color: rgb(237, 204, 156);
+   font-size: 20px;
+   text-align: center;
+   letter-spacing: 1px;
+   margin-top: 10px;
+}
+
+.score-value {
+   font-family: 'Caesar Dressing', serif;
+   color: rgb(237, 204, 156);
+   font-size: 20px;
+   text-align: center;
+   word-break: break-all;
+}
+
+#scoreContent {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 12px;
+   width: 100%;
+}
+
+.score-divider {
+   width: 70%;
+   height: 1px;
+   background-color: rgb(237, 204, 156);
+   margin: 6px auto;
+}
+
+/* ── Main Middle Area ── */
+#MainAreaSection {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 40%;
+}
+
+#UpgradeContainer {
+   display: flex;
+   position: relative;
+   justify-content: center;
+   height: 30%;
+   width: 100%;
+}
+
+.UpgradeImage {
+   background-image: url("../images/background.png");
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   z-index: 1;
+   height: 100%;
+   width: 100%;
+}
+
+.UpgradeArea {
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   position: absolute;
+   z-index: 2;
+   height: 100%;
+   width: 70%;
+}
+
+.upgrader {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   font-family: 'Caesar Dressing', serif;
+   padding-left: 10px;
+   padding-right: 10px;
+   font-size: 10px;
+   color: rgb(237, 204, 156);
+}
+
+.upgraderspeed {
+   display: flex;
+   flex-direction: column;
+   font-family: 'Caesar Dressing', serif;
+   padding-left: 7.5px;
+   padding-right: 7.5px;
+   padding-top: 5px;
+   font-size: 10px;
+   color: rgb(237, 204, 156);
+}
+
+.upgraderspeed:active {
+   filter: contrast(95%);
+   box-shadow:
+       inset 8px 8px 15px #3f2403,
+       inset -8px -8px 15px #3f2403;
+}
+
+.upgrader:active {
+   filter: contrast(95%);
+   box-shadow:
+       inset 8px 8px 15px #3f2403,
+       inset -8px -8px 15px #3f2403;
+}
+
+.upgraderspeed #speed {
+   padding-top: 5px;
+}
+
+.UpgradeArea button {
+   background: #5e3019dc;
+   border: 5px solid #301c0b;
+   border-radius: 20%;
+}
+
+.ClickerScreen {
+   margin: auto;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   width: 75%;
+}
+
+.ClickerScreen button {
+   width: 200px;
+   height: 200px;
+   background: transparent;
+   border: none;
+   padding-bottom: 75%;
+}
+
+.ClickerScreen button:active {
+   filter: brightness(80%);
+}
+
+#shawarmaCounter {
+   display: flex;
+   position: relative;
+   width: 300px;
+   height: 250px;
+   justify-content: center;
+   align-items: center;
+}
+
+#count {
+   margin: 0 6px;
+}
+
+#shawarmaDisplayScroll {
+   background-image: url('../images/scroll.png');
+   background-size: contain;
+   background-position: center;
+   background-repeat: no-repeat;
+   position: absolute;
+   z-index: 1;
+   height: 100%;
+   width: 100%;
+}
+
+#shawarmaDisplay {
+   font-family: 'Caesar Dressing', serif;
+   z-index: 2;
+   position: relative;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 13px;
+}
+
+/* ── Achivement / Rewards Section ── */
+#RewardsSection {
+   width: 30%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   overflow: hidden;
+}
+
+#Rewards {
+   position: absolute;
+   z-index: 2;
+   width: 70%;
+   height: 75%;
+   top: 12%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: flex-start;
+   padding: 10px;
+   overflow-y: auto;
+   top: 23%;
+   left: 32%;
+}
+
+#RewardsImage {
+   background-image: url('../images/pillar2.png');
+   background-size: 100% 100%;
+   background-position: center;
+   background-repeat: no-repeat;
+   position: absolute;
+   z-index: 1;
+   width: 100%;
+   height: 100%;
+}
+
+.score-small {
+   font-size: 15px;
+}
+
+.upgrade-cost {
+   font-family: 'Caesar Dressing', serif;
+   color: rgb(237, 204, 156);
+   font-size: 9px;
+}
+
+.reward-badge {
+   font-family: 'Caesar Dressing', serif;
+   color: rgb(237, 204, 156);
+   font-size: 20px;
+   text-align: center;
+   padding: 4px 2px;
+   width: 100%;
+   line-height: 1.4;
+}
+
+#rewardContent {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 8px;
+   width: 100%;
+}
+
+.reward-badge .badge-icon {
+   font-size: 30px;
+   display: block;
+}
+
+/* ── Achievement Pop-up ── */
+#popup-msg {
+   position: fixed;
+   top: 20px;
+   left: 50%;
+   transform: translateX(-50%);
+   background: #301c0b;
+   color: rgb(237, 204, 156);
+   border: 3px solid #5e3019;
+   border-radius: 12px;
+   padding: 14px 24px;
+   font-family: 'Caesar Dressing', serif;
+   font-size: 14px;
+   z-index: 999;
+   text-align: center;
+   max-width: 400px;
+   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Help Button ── */
+#help-btn {
+   position: fixed;
+   bottom: 16px;
+   right: 16px;
+   z-index: 100;
+   background: #5e3019dc;
+   border: 3px solid #301c0b;
+   border-radius: 20%;
+   font-family: 'Caesar Dressing', serif;
+   color: rgb(237, 204, 156);
+   font-size: 13px;
+   padding: 8px 14px;
+   cursor: pointer;
+}
+
+#help-overlay {
+   display: none;
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, 0.75);
+   z-index: 200;
+   justify-content: center;
+   align-items: center;
+}
+
+#help-box {
+   background: #301c0b;
+   border: 4px solid #5e3019;
+   border-radius: 16px;
+   padding: 30px;
+   max-width: 500px;
+   width: 90%;
+   color: rgb(237, 204, 156);
+   font-family: 'Caesar Dressing', serif;
+   max-height: 80vh;
+   overflow-y: auto;
+}
+
+#help-box h2 {
+   text-align: center;
+   margin-bottom: 16px;
+   font-size: 20px;
+}
+
+#help-box h3 {
+   font-size: 14px;
+   margin-bottom: 8px;
+   margin-top: 12px;
+}
+
+#help-box p,
+#help-box li {
+   font-size: 12px;
+   line-height: 2;
+   list-style: none;
+}
+
+#help-box ul {
+   padding: 0;
+}
+
+#close-help {
+   display: block;
+   margin: 20px auto 0;
+   background: #5e3019dc;
+   border: 3px solid #301c0b;
+   border-radius: 20%;
+   font-family: 'Caesar Dressing', serif;
+   color: rgb(237, 204, 156);
+   font-size: 13px;
+   padding: 8px 20px;
+   cursor: pointer;
+}
+
+/* Side Pillars */
+.pillar-title {
+   font-family: 'Caesar Dressing', serif;
+   color: rgb(255, 228, 170);
+   font-size: 20px;
+   margin-bottom: 20px;
+   text-align: center;
+   letter-spacing: 2px;
+   text-shadow: 2px 2px 4px black;
+}
+
+/* Progress Bar */
+#progressContainer {
+    width: 80%;
+    height: 18px;
+    background-color: #3f2403;
+    border: 2px solid #5e3019;
+    border-radius: 10px;
+    margin-top: 6px;
+    overflow: hidden;
+}
+
+#progressBar {
+    height: 100%;
+    width: 0%;
+    background-color: rgb(237, 204, 156);
+}
+
+#progressText {
+    color: rgb(237, 204, 156);   /* matches your theme */
+    text-align: center;
+    margin-top: 4px;
+}

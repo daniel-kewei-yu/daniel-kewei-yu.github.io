@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelForge · Team Animation</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(145deg, #0b0f1a 0%, #1a1f2f 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .animation-container {
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 0 2px #3a3f6e inset;
+            overflow: hidden;
+            background: #030514;
+        }
+
+        canvas {
+            display: block;
+            width: 1024px;
+            height: 512px;
+            background-color: #0c0f1c;
+        }
+
+        .caption {
+            text-align: center;
+            margin-top: 1rem;
+            color: #a7b9e0;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="animation-container">
+            <canvas id="teamCanvas" width="1024" height="512"></canvas>
+        </div>
+        <div class="caption">Crafting the Web One Pixel at a Time</div>
+    </div>
+
+    <script>
+        (function () {
+            const canvas = document.getElementById('teamCanvas');
+            const ctx = canvas.getContext('2d');
+
+            // Moving objects
+            class LissajousSquare {
+                constructor() {
+                    this.centerX = 512;
+                    this.centerY = 256;
+                    this.amplitudeX = 200;
+                    this.amplitudeY = 150;
+                    this.speedX = 0.02;
+                    this.speedY = 0.03;
+                    this.phaseX = 0;
+                    this.phaseY = Math.PI / 2;
+                    this.size = 16;
+                    this.color = '#6b8cff';
+                }
+
+                update() {
+                    this.phaseX += this.speedX;
+                    this.phaseY += this.speedY;
+                }
+
+                draw() {
+                    const x = this.centerX + this.amplitudeX * Math.sin(this.phaseX);
+                    const y = this.centerY + this.amplitudeY * Math.cos(this.phaseY);
+                    ctx.fillStyle = this.color;
+                    ctx.shadowColor = '#a080ff';
+                    ctx.shadowBlur = 20;
+                    ctx.fillRect(x - this.size / 2, y - this.size / 2, this.size, this.size);
+                }
+            }
+
+            class OrbitingCircle {
+                constructor() {
+                    this.centerX = 512;
+                    this.centerY = 256;
+                    this.radius = 140;
+                    this.angle = 0;
+                    this.speed = 0.025;
+                    this.circleRadius = 14;
+                    this.color = '#c97bff';
+                }
+
+                update() {
+                    this.angle += this.speed;
+                }
+
+                draw() {
+                    const x = this.centerX + this.radius * Math.cos(this.angle);
+                    const y = this.centerY + this.radius * Math.sin(this.angle);
+                    ctx.fillStyle = this.color;
+                    ctx.shadowColor = '#ff7be0';
+                    ctx.shadowBlur = 20;
+                    ctx.beginPath();
+                    ctx.arc(x, y, this.circleRadius, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            // Background grid
+            function drawBackgroundGrid() {
+                ctx.shadowBlur = 0;
+                ctx.strokeStyle = '#2a3355';
+                ctx.lineWidth = 1;
+                ctx.globalAlpha = 0.25;
+                for (let i = 0; i <= canvas.width; i += 40) {
+                    ctx.beginPath();
+                    ctx.moveTo(i, 0);
+                    ctx.lineTo(i, canvas.height);
+                    ctx.strokeStyle = '#4f5c9e';
+                    ctx.stroke();
+                }
+                for (let i = 0; i <= canvas.height; i += 40) {
+                    ctx.beginPath();
+                    ctx.moveTo(0, i);
+                    ctx.lineTo(canvas.width, i);
+                    ctx.strokeStyle = '#4f5c9e';
+                    ctx.stroke();
+                }
+                ctx.globalAlpha = 1.0;
+            }
+
+            // Text drawing (enlarged)
+            function drawText() {
+                ctx.shadowBlur = 30;
+                ctx.shadowColor = '#7f9fff';
+                ctx.font = 'bold 64px "Courier New", Courier, monospace';
+                ctx.fillStyle = '#ffffff';
+                ctx.textAlign = 'center';
+                ctx.fillText('PIXELFORGE', 512, 150);
+
+                ctx.shadowBlur = 15;
+                ctx.font = '26px "Courier New", Courier, monospace';
+                ctx.fillStyle = '#b8ceff';
+                ctx.fillText('crafting the web', 512, 360);
+                ctx.fillText('one pixel at a time', 512, 410);
+
+                ctx.font = '20px monospace';
+                ctx.fillStyle = '#6c86b0';
+                ctx.fillText('for Computer Science Society', 512, 470);
+            }
+
+            const square = new LissajousSquare();
+            const circle = new OrbitingCircle();
+
+            function animate() {
+                square.update();
+                circle.update();
+
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#0c0f1c';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                drawBackgroundGrid();
+                square.draw();
+                circle.draw();
+                drawText();
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        })();
+    </script>
+</body>
+
+</html>

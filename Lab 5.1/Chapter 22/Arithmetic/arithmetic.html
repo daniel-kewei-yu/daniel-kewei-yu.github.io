@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Arithmetic</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <style type="text/css">
+        body {
+            font-size: 20px;
+            font-family: sans-serif;
+        }
+
+        input[type=number],
+        input[type=text],
+        select {
+            width: 50px;
+            font-family: sans-serif;
+            text-align: right;
+            font-size: 20px;
+        }
+
+        #wrapper {
+            margin: auto;
+            width: 380px;
+            background-color: blanchedalmond;
+            padding: 10px;
+            padding-top: 0px;
+        }
+    </style>
+    <script>
+        function calculate() {
+            // Get input values
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const operation = document.getElementById('operation').value;
+            const resultField = document.getElementById('result');
+
+            let result;
+
+            // Perform calculation based on selected operation
+            switch (operation) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    // Handle division by zero
+                    if (num2 === 0) {
+                        result = "Error: Cannot divide by zero";
+                    } else {
+                        result = num1 / num2;
+                    }
+                    break;
+                case '%':
+                    // Handle modulo with zero
+                    if (num2 === 0) {
+                        result = "Error: Cannot modulo by zero";
+                    } else {
+                        result = num1 % num2;
+                    }
+                    break;
+                default:
+                    result = "Invalid operation";
+            }
+
+            // Display result
+            resultField.value = result;
+        }
+
+        // Set up event listeners when page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            // Add event listeners to all form elements
+            document.getElementById('num1').addEventListener('input', calculate);
+            document.getElementById('num2').addEventListener('input', calculate);
+            document.getElementById('operation').addEventListener('change', calculate);
+
+            // Calculate initial result when page loads
+            calculate();
+        });
+    </script>
+</head>
+
+<body>
+    <div id='wrapper'>
+        <header>
+            <h1>I Heart Arithmetic...</h1>
+        </header>
+        <form>
+            <input type="number" id="num1" value="2">
+            <select id="operation">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+                <option value="%">%</option>
+            </select>
+            <input type="number" id="num2" value="2"> =
+            <input type='text' id="result" readonly>
+            <!-- Button removed as per Exercise 6 requirements -->
+        </form>
+    </div>
+</body>
+
+</html>

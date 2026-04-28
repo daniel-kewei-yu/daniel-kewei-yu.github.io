@@ -1,0 +1,18 @@
+INSERT INTO employees(
+    LastName,
+    FirstName,
+    BirthDate,
+    Notes
+)
+VALUES(
+    'Smith',
+    'Amy',
+    '1969-11-02',
+    'has a B.A. in Basket Weaving from University of South Southwestern Ontario'
+);
+SELECT
+    *
+FROM
+    employees
+WHERE
+    FirstName = 'Amy' AND LastName = 'Smith';

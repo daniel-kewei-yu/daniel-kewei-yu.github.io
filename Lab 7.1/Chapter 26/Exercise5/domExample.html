@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--
+Enhanced DOM Example with interactive buttons and mouseover deletion
+Sam Scott, McMaster, 2024 (modified)
+-->
+<html>
+
+<head>
+    <title>DOM Example</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        div,
+        .checkerboard {
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid gray;
+        }
+
+        .checkerboard {
+            display: grid;
+            grid-template-columns: 50px 50px;
+            gap: 2px;
+            width: 104px;
+            padding: 2px;
+        }
+
+        .black {
+            background-color: black;
+            width: 50px;
+            height: 50px;
+        }
+
+        .red {
+            background-color: red;
+            width: 50px;
+            height: 50px;
+        }
+
+        button {
+            margin: 5px;
+            padding: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1">This div has ID "div1"</div>
+    <div>This div has no ID</div>
+    <div>This div has no ID</div>
+
+    <button id="btnDiv">Add New Div</button>
+    <button id="btnFragment">Add Div with Link</button>
+    <button id="btnCheckerboard">Add Checkerboard</button>
+
+    <script>
+        // Counter for new divs
+        let divCounter = 1;
+
+        // Function to delete a div when moused over
+        function deleteOnMouseOver(event) {
+            event.target.remove();
+        }
+
+        // Add mouseover listener to all existing divs
+        document.querySelectorAll('div').forEach(div => {
+            div.addEventListener('mouseover', deleteOnMouseOver);
+        });
+
+        // Button 1: add a new div with text "New Div X"
+        document.getElementById('btnDiv').addEventListener('click', function () {
+            const newDiv = document.createElement('div');
+            newDiv.textContent = `New Div ${divCounter++}`;
+            // Attach mouseover listener so it can be deleted
+            newDiv.addEventListener('mouseover', deleteOnMouseOver);
+            document.body.appendChild(newDiv);
+        });
+
+        // Button 2: add a DOM fragment: div containing an a element with text
+        document.getElementById('btnFragment').addEventListener('click', function () {
+            const fragment = document.createElement('div');
+            const link = document.createElement('a');
+            link.href = '#';  // dummy link
+            link.textContent = 'Click me (does nothing)';
+            fragment.appendChild(link);
+            // Optionally add some styling to distinguish
+            fragment.style.backgroundColor = '#eef';
+            fragment.style.padding = '8px';
+            fragment.style.border = '1px solid blue';
+            document.body.appendChild(fragment);
+        });
+
+        // Button 3: add a four-element checkerboard (2x2 grid)
+        document.getElementById('btnCheckerboard').addEventListener('click', function () {
+            const board = document.createElement('div');
+            board.className = 'checkerboard';
+            // Create four squares with alternating colors
+            for (let i = 0; i < 4; i++) {
+                const square = document.createElement('div');
+                square.className = (i % 2 === 0) ? 'black' : 'red';
+                board.appendChild(square);
+            }
+            document.body.appendChild(board);
+        });
+    </script>
+</body>
+
+</html>

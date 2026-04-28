@@ -1,0 +1,267 @@
+<!doctype html>
+<!--
+Author: Daniel Yu
+Date: 2026-01-26
+Description: This is the front page of my news website for the web layout assignment
+Course: COMPSCI 1XD3
+-->
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insight Journal</title>
+    <link rel="stylesheet" href="cssASSIGNMENT1/stylesAssignment1.css">
+</head>
+
+<body>
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+
+    <!-- Side menu -->
+    <nav class="side-menu">
+        <a href="https://example.com">Headlines</a>
+        <a href="https://example.com">Politics</a>
+        <a href="https://example.com">Sports</a>
+        <a href="https://example.com">Business</a>
+        <a href="https://example.com">Local</a>
+        <a href="https://example.com">Arts</a>
+        <a href="https://example.com">Weather</a>
+    </nav>
+
+    <div class="page">
+        <!-- Header -->
+        <header>
+            <div class="header-container">
+                <!-- Horizontal navigation -->
+                <div class="horizontal-nav">
+                    <label for="menu-toggle" class="menu-icon-label desktop-tablet">
+                        <img src="imagesASSIGNMENT1/HamburgerMenuIcon.png" alt="Menu Icon" class="menu-icon">
+                    </label>
+                    <a href="https://example.com">Headlines</a>
+                    <a href="https://example.com">Politics</a>
+                    <a href="https://example.com">Sports</a>
+                    <a href="https://example.com">Business</a>
+                    <a href="https://example.com">Local</a>
+                    <a href="https://example.com">Arts</a>
+                    <a href="https://example.com">Weather</a>
+                </div>
+
+                <!-- Title -->
+                <div class="header-title">
+                    <label for="menu-toggle" class="menu-icon-label mobile">
+                        <img src="imagesASSIGNMENT1/HamburgerMenuIcon.png" alt="Menu Icon" class="menu-icon">
+                    </label>
+                    <h1 class="site-title">Insight Journal</h1>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main content -->
+        <main>
+            <section class="stories-container">
+                <div class="stories">
+                    <!-- Left column -->
+                    <div class="left-column">
+                        <!-- Story 1 -->
+                        <a href="https://www.ctvnews.ca/toronto/politics/queens-park/article/doug-ford-calls-federal-auto-strategy-great-and-says-ontario-will-be-part-of-it-after-meeting-with-carney-and-joly/"
+                            class="story-link">
+                            <article class="story">
+                                <img src="imagesASSIGNMENT1/Story1.png" alt="Auto strategy">
+                                <h2>Doug Ford calls federal auto strategy 'great' and says Ontario will be part of it
+                                </h2>
+                                <p>Ontario Premier Doug Ford appears to have had a change of heart when it comes to the
+                                    federal government's auto strategy after hearing more about it from federal
+                                    officials. "I also want to thank Minister (Mélanie) Joly for coming up with a great
+                                    auto strategy that the minister has put together that we're going to be part of,"
+                                    Ford said at a news conference with Joly at Queen's Park Monday after the two met.
+                                    While the two did not unveil specifics, Ford said he still believes any countries
+                                    bringing vehicles into Canada should support existing Canadian auto workers. "If
+                                    companies are going to come in, no matter if it's from China or over in Europe or
+                                    over in Asia there, we have one request; build the vehicles here, protect the auto
+                                    sector," Ford said.</p>
+                            </article>
+                        </a>
+
+                        <!-- Story 2 -->
+                        <a href="https://www.ctvnews.ca/canada/article/south-korean-submarine-maker-signs-mou-with-algoma-steel/"
+                            class="story-link">
+                            <article class="story">
+                                <img src="imagesASSIGNMENT1/Story2.png" alt="Submarine manufacturing">
+                                <h2>South Korean submarine maker signs MOU with Algoma Steel</h2>
+                                <p>In its bid to win the massive contract to build Canada's next generation of
+                                    submarines, South Korea's Hanwha Ocean is entering into a long-term strategic
+                                    arrangement with Algoma Steel, which could result in some parts of the submarines
+                                    being manufactured in Ontario. The two companies have entered into a binding
+                                    Memorandum of Understanding (MOU) valued at approximately $345 million, which would
+                                    see the Korean defence company invest $275 million towards the construction of a new
+                                    structural steel beam mill in Sault Ste. Marie, Ont. The two companies have entered
+                                    into a binding Memorandum of Understanding (MOU) valued at approximately $345
+                                    million, which would see the Korean defence company invest $275 million towards the
+                                    construction of a new structural steel beam mill in Sault Ste. Marie, Ont. CTV News
+                                    has not seen the KPMG analysis.</p>
+                            </article>
+                        </a>
+                    </div>
+
+                    <!-- Right column -->
+                    <div class="right-column">
+                        <div class="right-top">
+                            <!-- Story 3 -->
+                            <a href="https://www.ctvnews.ca/calgary/article/poisoned-in-a-pool-children-fall-ill-in-canmore-alta-hotel-pool/"
+                                class="story-link">
+                                <article class="story">
+                                    <img src="imagesASSIGNMENT1/Story3.png" alt="Pool incident">
+                                    <h2>Children fall ill in Canmore, Alta., hotel pool</h2>
+                                    <p>
+                                        <span class="first-sentence">Parents of an Alberta minor hockey team are looking
+                                            for answers after dozens of children fell ill while swimming at a Canmore
+                                            hotel pool on the weekend.</span>
+                                        <span class="remaining-sentences">On Jan. 25, Melissa Erle was staying at the
+                                            Canmore
+                                            Inn and Suites, located at 1402 Bow Valley Tr., with her husband and her
+                                            three children. She told CTV News on Monday her husband had taken two of the
+                                            kids to the pool for a swim before their tournament, but she stayed behind
+                                            with the other to have breakfast. Around 10:30 a.m., when she went to meet
+                                            her husband, she found out something was wrong.</span>
+                                    </p>
+                                </article>
+                            </a>
+
+                            <!-- Story 4 -->
+                            <a href="https://www.ctvnews.ca/weather/article/most-of-canada-battles-snowstorm-that-brings-flights-schools-to-grinding-halt/"
+                                class="story-link">
+                                <article class="story">
+                                    <img src="imagesASSIGNMENT1/Story4.png" alt="Snowstorm">
+                                    <h2>Most of Canada battles snowstorm that brings flights, schools to grinding halt
+                                    </h2>
+                                    <p>
+                                        <span class="first-sentence">A record-breaking snowstorm wreaked havoc on
+                                            southern Ontario and Quebec over the weekend, leading to the cancellation of
+                                            hundreds of flights before travelling further east.</span>
+                                        <span class="remaining-sentences">According to FlightAware.com, nearly 300
+                                            flights
+                                            departing Toronto's Pearson Airport were cancelled, while airport crews
+                                            cleaned up the highest daily total snowfall recorded on Sunday – 46
+                                            centimetres. Pearson warned the public of further delays on Monday, as the
+                                            cleanup drive requiring massive snowplows and dump trucks continued to work
+                                            on the tarmac. Flights to and from Atlantic Canada and parts of the U.S.
+                                            could face further disruptions, the airport warned passengers.</span>
+                                    </p>
+                                </article>
+                            </a>
+                        </div>
+
+                        <div class="right-middle">
+                            <!-- Story 5 -->
+                            <a href="https://www.ctvnews.ca/edmonton/article/wrestler-dressed-as-ice-agent-at-edmonton-match-apologizes/"
+                                class="story-link">
+                                <article class="story">
+                                    <img src="imagesASSIGNMENT1/Story5.png" alt="Wrestling controversy">
+                                    <h2>Wrestler dressed as ICE agent at Edmonton match apologizes</h2>
+                                    <p>
+                                        <span class="first-sentence">A wrestler is apologizing after dressing up as an
+                                            U.S. Immigration and Customs Enforcement agent at an Edmonton match over the
+                                            weekend.</span>
+                                        <span class="remaining-sentences">The match, put on by Real Canadian Wrestling
+                                            (RCW),
+                                            featured a wrestler wearing a vest with "ICE" on the back. ICE agents have
+                                            recently come under criticism after the recent killings of American citizens
+                                            Renée Good and Alex Pretti in Minneapolis, Minn. "RCW had no creative
+                                            direction or involvement in my portrayal of an ICE officer, including the
+                                            music that played during my entrance," said Stewy Seunnapha in a post to
+                                            social media.</span>
+                                    </p>
+                                </article>
+                            </a>
+
+                            <!-- Story 6 -->
+                            <a href="https://www.ctvnews.ca/vancouver/article/ice-wants-to-buy-pattison-building-to-use-for-holding-and-processing/"
+                                class="story-link">
+                                <article class="story desktop-only">
+                                    <img src="imagesASSIGNMENT1/Story6.png" alt="ICE building">
+                                    <h2>ICE wants to buy Pattison building to use for 'holding and processing'</h2>
+                                    <p>The United States Department of Homeland Security is planning to buy a building
+                                        owned by the property arm of Vancouver-based conglomerate Jim Pattison Group to
+                                        use as an Immigration and Customs Enforcement "processing facility." The
+                                        department sent a letter to the Hanover County planning department in Hanover,
+                                        Va., last Wednesday, sharing its intent to "purchase, occupy and rehabilitate"
+                                        the warehouse property. Property records show Jim Pattison Developments bought
+                                        the building for roughly C$10.4 million in 2022 and the site is expected to be
+                                        valued at around C$69 million this year, following improvements. The Jim
+                                        Pattison Group and Jim Pattison Developments did not immediately return requests
+                                        for comment.</p>
+                                </article>
+                            </a>
+                        </div>
+
+                        <div class="right-bottom">
+                            <!-- Story 7 -->
+                            <a href="https://www.ctvnews.ca/sports/article/olympic-medallist-swimmer-ilya-kharun-switches-from-canada-to-united-states/"
+                                class="story-link">
+                                <article class="story desktop-only">
+                                    <img src="imagesASSIGNMENT1/Story7.png" alt="Olympic swimmer">
+                                    <h2>Olympic medallist swimmer Ilya Kharun switches from Canada to United States</h2>
+                                    <p>Olympic medallist swimmer Ilya Kharun is switching national allegiances. The
+                                        20-year-old, who has represented Canada since 2022, announced Monday that he
+                                        will represent the United States going forward. Born in Montreal, Kharun is a
+                                        two-time Olympic medallist, earning bronze in the men's 100- and 200-metre
+                                        butterfly events at the Paris 2024 Games. He also won bronze in the 100
+                                        butterfly at the 2025 world championships.</p>
+                                </article>
+                            </a>
+
+                            <!-- Story 8 -->
+                            <a href="https://www.ctvnews.ca/politics/article/carney-unveils-boost-to-gst-credit-as-parliament-resumes/"
+                                class="story-link">
+                                <article class="story desktop-only">
+                                    <img src="imagesASSIGNMENT1/Story8.png" alt="GST credit">
+                                    <h2>Carney unveils boost to GST credit as Parliament resumes</h2>
+                                    <p>With Parliament resuming after the winter break, Prime Minister Mark Carney has
+                                        unveiled a boost to the GST credit as part of a suite of new affordability
+                                        measures. Carney made the announcement in Ottawa on Monday, launching what's
+                                        called the "Canada Groceries and Essentials Benefit." "Canada's new government
+                                        is acting today to provide a boost to those Canadian families who most need one,
+                                        while creating a bridge to longer-term food security and affordability," Carney
+                                        said. Starting in July, the quarterly GST payments will see an increase of 25
+                                        per cent over the next five years, and will also include a one-time top-up of 50
+                                        per cent this year.</p>
+                                </article>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-section">
+                <h3>Subscribe</h3>
+                <div class="links-container">
+                    <a href="https://example.com">Daily</a>
+                    <a href="https://example.com">Weekly</a>
+                    <a href="https://example.com">Print</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Account</h3>
+                <div class="links-container">
+                    <a href="https://example.com">Sign In</a>
+                    <a href="https://example.com">Manage</a>
+                    <a href="https://example.com">Help</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <div class="links-container">
+                    <a href="https://example.com">Newsroom</a>
+                    <a href="https://example.com">Advertising</a>
+                    <a href="https://example.com">Careers</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

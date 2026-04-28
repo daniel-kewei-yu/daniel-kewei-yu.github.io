@@ -1,0 +1,842 @@
+/*
+Author: Daniel Yu
+Date: 2026-01-26
+Description: This is the css file for the web layout assignment
+*/
+
+/* 
+Reset Style
+Resets browser default margins/padding, sets box-sizing to border-box for consistent sizing
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 
+Global Body Styles
+Defines the base typography, background, text colors, and responsive behavior for the entire document across all devices.
+*/
+body {
+    font-family: "Georgia", "Times New Roman", serif;
+    line-height: 2;
+    background: #fff9e2;
+    color: #000000;
+    min-height: 100%;
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+/* 
+Page COntainer
+Provides consistent margins and width for the main page content
+*/
+.page {
+    margin: 10px;
+    width: calc(100% - 20px);
+    transition: transform 0.3s ease;
+}
+
+/* 
+HEADER CONTAINER
+Sets positioning context for header elements, particularly for
+absolute positioning of navigation elements.
+*/
+.header-container {
+    position: relative;
+}
+
+/* 
+Article/Story Link Styles
+Styles for clickable story/article links, including hover effects with hover animations for visual feedback
+*/
+.story-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.story-link:hover {
+    transform: translateY(-2px);
+}
+
+.story-link:hover .story {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-color: #8b0000;
+}
+
+/* 
+Story Card Styles Common
+Base styling for all story/article cards including background, borders, shadows, and internal layout using flexbox.
+*/
+.story {
+    background: white;
+    border: 1px solid #d4d4d4;
+    border-radius: 3px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* 
+Story Image Styles
+Ensures consistent sizing, cropping/object-fitting, and spacing for images within story cards
+*/
+.story img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+/* 
+Text Display Control Classes
+Classes to control visibility of first sentence and the remaining sentences of a story for responsive text truncation on the 3 different devices
+*/
+.first-sentence,
+.remaining-sentences {
+    display: inline;
+}
+
+/* 
+Side Menu Toggle Mechanism:
+Hides the actual checkbox input used to control side menu visibility while providing visual toggle controls via labels
+*/
+.menu-toggle {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+/* 
+Menu Toggle Label and Icon
+Provides clickable area for toggling side menu with appropriate positioning and cursor feedback
+*/
+.menu-icon-label {
+    cursor: pointer;
+    display: block;
+    z-index: 1000;
+}
+
+.menu-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    display: block;
+    z-index: 1000;
+}
+
+.menu-icon-label.mobile {
+    display: none;
+}
+
+/* 
+Side Menu with Off-Canvas Navigation
+Side menu that slides in/out from the left edg by using checkbox hack for state management
+*/
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: white;
+    z-index: 1000;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 1);
+    display: flex;
+    flex-direction: column;
+    transition: left 0.1s ease;
+    border-right: 1px solid #e0e0e0;
+}
+
+/* 
+Side Menu Visibility Toggle
+When checkbox is checked, slides the side menu into view from left
+*/
+.menu-toggle:checked~.side-menu {
+    left: 0;
+}
+
+/* 
+Side Menu Link Styles
+Styles for navigation links within the side menu including spacing, borders, colors, and hover effects
+*/
+.side-menu a {
+    padding: 18px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    color: #3b3b3b;
+    font-size: 16px;
+    text-align: left;
+    text-decoration: none;
+    width: 100%;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: block;
+    flex-shrink: 0;
+}
+
+.side-menu a:last-child {
+    border-bottom: none;
+}
+
+.side-menu a:hover {
+    color: #006cd8;
+    background: #fff8e1;
+}
+
+/* 
+Footer Common Structure
+Base footer layout using flexbox with consistent padding, borders, background, and spacing across all devices.
+*/
+footer {
+    display: flex;
+    padding: 30px;
+    border: 1px solid #d4d4d4;
+    border-radius: 3px;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-top: auto;
+    margin-bottom: 10px;
+}
+
+/* 
+Footer Section Styles
+Individual column/section within the footer with vertical layout and visual separation between sections.
+*/
+.footer-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+}
+
+.footer-section h3 {
+    color: #8b0000;
+    padding-bottom: 8px;
+    font-weight: 700;
+}
+
+.footer-section a {
+    text-decoration: none;
+    color: #1a1a1a;
+    padding: 6px 0;
+    transition: color 0.3s;
+    display: block;
+}
+
+.footer-section a:hover {
+    color: #8b0000;
+    padding-left: 5px;
+}
+
+/* 
+Desktop Layout(>768px):
+Responsive styles for large screens including full navigation, multi-column story layout, larger typography, and detailed footer
+*/
+@media (min-width: 769px) {
+
+    /* 
+    Desktop Header Styles
+    Header with bottom border and title positioning for desktop
+    */
+    header {
+        margin-bottom: 20px;
+        border-bottom: 2px solid #8b7355;
+        position: relative;
+    }
+
+    .header-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0;
+        position: relative;
+    }
+
+    .site-title {
+        font-size: 48px;
+        color: #8b0000;
+        font-weight: 700;
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* 
+    desktop Menu Positioning
+    Positions menu toggle icon on left side of header for desktop/tablet
+    */
+    .menu-icon-label.desktop-tablet {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        display: block;
+    }
+
+    .menu-icon-label.mobile {
+        display: none;
+    }
+
+    /* 
+    Horizontal Navigation Bar:
+    Full navigation bar with all menu items, horizontal layout, and visual separation between links
+    */
+    .horizontal-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 1px solid #8b7355;
+        position: relative;
+        background-color: rgb(245, 223, 163);
+    }
+
+    .horizontal-nav a:not(:last-child) {
+        border-right: 1px solid #8b7355;
+    }
+
+    .horizontal-nav a {
+        text-decoration: none;
+        color: #000000;
+        font-weight: 600;
+        font-size: 18px;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    .horizontal-nav a:hover {
+        color: #8b0000;
+    }
+
+    /* 
+    Main Content Layout:
+    Flexbox container for main content area with margin for spacing
+    */
+    main {
+        flex: 1;
+        margin-bottom: 30px;
+    }
+
+    /* 
+    Stories Container and Column Layout:
+    Complex multi-column layout with left column (1/3) and right column (2/3), further divided into top, middle, and bottom rows for story organization
+    */
+    .stories-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .stories {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .left-column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        min-width: 0;
+    }
+
+    .right-column {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-width: 0;
+    }
+
+    .right-top,
+    .right-middle,
+    .right-bottom {
+        display: flex;
+        gap: 10px;
+    }
+
+    .right-top .story-link,
+    .right-middle .story-link,
+    .right-bottom .story-link {
+        flex: 1;
+        min-width: 0;
+    }
+
+    /* 
+    Desktop Story Typography:
+    Larger headline and paragraph sizes for better readability on desktop.Right column stories have slightly smaller text for space efficiency
+    */
+    .story h2 {
+        font-size: 20px;
+        margin-bottom: 12px;
+        line-height: 1.3;
+        color: #1a1a1a;
+        font-weight: 700;
+    }
+
+    .right-column .story h2 {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .story p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #333;
+        font-weight: normal;
+    }
+
+    .right-column .story p {
+        font-size: 11px;
+        color: #555;
+        line-height: 1.5;
+    }
+
+    /* 
+    Desktop-Only Stories:
+    Stories marked as desktop-only are displayed on desktop but hidden on smaller screens for content priority management
+    */
+    .story.desktop-only {
+        display: flex;
+    }
+
+    /* 
+    Desktop Footer Layout:
+    Multi-column footer with separators between sections and spacing for desktop view.
+    */
+    footer {
+        justify-content: space-between;
+        gap: 40px;
+    }
+
+    .footer-section {
+        min-width: 150px;
+    }
+
+    .footer-section h3 {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+
+    .footer-section a {
+        font-size: 15px;
+    }
+}
+
+/* 
+Tablet Layout (481px–768px):
+Responsive styles for medium-sized screens with simplified navigation, adjusted column ratios, truncated text, and modified footer
+*/
+@media (max-width: 768px) and (min-width: 481px) {
+
+    /* 
+    Tablet Body Styles:
+    Adjusted background color and text color for tablet optimization.
+    */
+    body {
+        background: #f8f5e9;
+        color: #1a1a1a;
+    }
+
+    /* 
+    Tablet Header Styles:
+    Maintains header structure with slightly smaller title and consistent border styling
+    */
+    header {
+        margin-bottom: 20px;
+        border-bottom: 2px solid #8b7355;
+        position: relative;
+    }
+
+    .header-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0;
+        position: relative;
+    }
+
+    .site-title {
+        font-size: 36px;
+        color: #8b0000;
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* 
+    Tablet Menu Positioning:
+    Menu toggle remains on left side but with adjusted positioning
+    */
+    .menu-icon-label.desktop-tablet {
+        position: absolute;
+        left: 0;
+        display: block;
+    }
+
+    .menu-icon-label.mobile {
+        display: none;
+    }
+
+    /* 
+    Tablet Horizontal Navigation:
+    Shows only the 4 key navigation items Headlines, Sports, Local, Weather to prioritize space while maintaining key categories as shown in the assignment pdf
+    */
+    .horizontal-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 1px solid #8b7355;
+        position: relative;
+        background-color: rgb(245, 223, 163);
+        padding: 0;
+    }
+
+    .horizontal-nav a {
+        display: none;
+        text-decoration: none;
+        color: #000000;
+        font-weight: 600;
+        font-size: 14px;
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+        text-align: center;
+        padding: 10px 5px;
+        border-right: 1px solid #8b7355;
+    }
+
+    /* Show only Headlines (1), Sports (3), Local (5), Weather (7) */
+    .horizontal-nav a:nth-of-type(1),
+    .horizontal-nav a:nth-of-type(3),
+    .horizontal-nav a:nth-of-type(5),
+    .horizontal-nav a:nth-of-type(7) {
+        display: flex;
+    }
+
+    .horizontal-nav a:nth-of-type(7) {
+        border-right: none;
+    }
+
+    .horizontal-nav a:hover {
+        color: #8b0000;
+    }
+
+    /* 
+    Tablet Content Layout:
+    Hides desktop-only stories and adjusts column ratios where left column becomes slightly larger than right
+    */
+    .story.desktop-only {
+        display: none;
+    }
+
+    .stories {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .left-column {
+        flex: 1.5;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        min-width: 0;
+    }
+
+    .right-column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        min-width: 0;
+    }
+
+    .right-top,
+    .right-middle,
+    .right-bottom {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .story {
+        padding: 15px;
+    }
+
+    /* 
+    Tablet Typography:
+    Slightly smaller text sizes and adjusted spacing for tablet screens.
+    */
+    .story h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        line-height: 1.3;
+    }
+
+    .right-column .story h2 {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        line-height: 1.3;
+    }
+
+    .story p {
+        font-size: 14px;
+        line-height: 1.5;
+        color: #333;
+    }
+
+    /* 
+    Tablet Text Truncation:
+    Shows only first sentence in right column stories to save space, while left column stories show full text for featured content
+    */
+    .right-column .story .remaining-sentences {
+        display: none;
+    }
+
+    .right-column .story .first-sentence {
+        display: inline;
+    }
+
+    .left-column .story .remaining-sentences {
+        display: inline;
+    }
+
+    /* 
+    Tablet Footer:
+    Maintains multi-column layout with reduced spacing and smaller typography for tablet screens
+    */
+    footer {
+        justify-content: space-between;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .footer-section h3 {
+        font-size: 16px;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+    }
+
+    .footer-section a {
+        font-size: 14px;
+        padding: 4px 0;
+    }
+}
+
+/* 
+Mobile Layout (<=480px):
+Responsive styles for small screens with simplified navigation (hamburger only), single column layout, minimal text, and vertical footer
+*/
+@media (max-width: 480px) {
+
+    /* 
+    Mobile Body Styles:
+    Switches to sans-serif font for better mobile readability, cleaner background, and adjusted text colors
+    */
+    body {
+        font-family: "Arial", "Helvetica", sans-serif;
+        background: #ffffff;
+        color: #333333;
+    }
+
+    /* 
+    Mobile Header Styles:
+    Simplified header with different color scheme and mobile-optimized hamburger menu positioning
+    */
+    header {
+        border-bottom: 2px solid #e0e0e0;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        width: 100%;
+        position: relative;
+    }
+
+    .header-title {
+        position: relative;
+        border-bottom: 1px solid #e0e0e0;
+        padding-bottom: 15px;
+        padding-top: 15px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .site-title {
+        font-size: 28px;
+        color: #0066cc;
+        margin: 0;
+        flex-grow: 1;
+        text-align: center;
+        order: 2;
+    }
+
+    /* 
+    Mobile Navigation:
+    Hides horizontal navigation completely, shows only hamburger menu in mobile-specific positioning, which is on left side of header
+    */
+    .horizontal-nav {
+        display: none;
+    }
+
+    .menu-icon-label.desktop-tablet {
+        display: none;
+    }
+
+    .menu-icon-label.mobile {
+        display: block;
+        margin: 0;
+        padding: 0;
+        flex-shrink: 0;
+        order: 1;
+    }
+
+    /* 
+    Mobile Content Layout:
+    Single column layout for all content, hides desktop-only stories, and simplifies all containers to vertical flow
+    */
+    .story.desktop-only {
+        display: none;
+    }
+
+    .stories {
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .left-column,
+    .right-column,
+    .right-top,
+    .right-middle,
+    .right-bottom {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .story {
+        border: 1px solid #e0e0e0;
+        padding: 15px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        margin: 0 0 20px 0;
+    }
+
+    .story-link:hover .story {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 
+    Mobile Typography:
+    Smaller, mobile-optimized font sizes with adjusted line heights for better readability on small screens
+    */
+    .story h2 {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: #333333;
+        line-height: 1.3;
+    }
+
+    .story p {
+        font-size: 14px;
+        line-height: 1.5;
+        color: #555;
+        font-weight: normal;
+    }
+
+    /* 
+    Mobile Text Truncation:
+    Applies same text truncation rules as tablet for right column stories to maintain the content hierarchy on mobile
+    */
+    .right-column .story .remaining-sentences {
+        display: none;
+    }
+
+    .right-column .story .first-sentence {
+        display: inline;
+    }
+
+    .left-column .story .remaining-sentences {
+        display: inline;
+    }
+
+    /* 
+    Mobile Footer:
+    Vertical stack layout for footer sections with centered headings and horizontally arranged links within each section
+    */
+    footer {
+        flex-direction: column;
+        gap: 25px;
+        padding: 20px;
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+
+    .footer-section h3 {
+        color: #0066cc;
+        font-size: 16px;
+        margin-bottom: 0;
+        padding-bottom: 8px;
+        font-weight: 600;
+        text-align: left;
+    }
+
+    /* 
+    Mobile Footer Link Containers:
+    Horizontally arranges links within each footer section with separators between them
+    */
+    .footer-section .links-container {
+        display: flex;
+        justify-content: left;
+        align-items: left;
+        gap: 10px;
+    }
+
+    .footer-section a {
+        color: #333333;
+        font-size: 14px;
+        padding: 0;
+        white-space: nowrap;
+        position: relative;
+    }
+
+    .footer-section a:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        right: -8px;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 70%;
+        width: 1px;
+        background-color: #d0d0d0;
+    }
+
+    .footer-section a:hover {
+        color: #0066cc;
+        padding-left: 0;
+    }
+}

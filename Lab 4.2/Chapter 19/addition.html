@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+Finish this program by filling in JavaScript that checks if the user's answer to 
+the addition question is correct, and then display "Correct" or "Incorrect" on the 
+web page by changing the innerHTML of the <h1> element.
+
+Sam Scott, McMaster University, 2025
+-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>addition</title>
+    <style>
+        .invalid-input {
+            background-color: red;
+            border: 5px solid black;
+            padding: 10px;
+            color: white;
+        }
+    </style>
+    <script type="text/javascript">
+        function addition() {
+            let op1 = Math.floor(Math.random() * 200 - 100);
+            let op2 = Math.floor(Math.random() * 200 - 100);
+            let correctAnswer = op1 + op2;
+            
+            // Get user's answer from prompt
+            let userAnswer = prompt("What is " + op1 + " + " + op2 + "?");
+            
+            // Get the result element
+            let resultElement = document.getElementById("result");
+            
+            // First, remove the invalid-input class if it exists
+            resultElement.classList.remove("invalid-input");
+            
+            // Check if input is a valid number
+            if (userAnswer === null || userAnswer.trim() === "" || isNaN(parseInt(userAnswer))) {
+                // Invalid input
+                resultElement.innerHTML = "Invalid input! Please enter a valid number.";
+                resultElement.classList.add("invalid-input");
+                return;
+            }
+            
+            // Parse the user's answer as an integer
+            let userNumber = parseInt(userAnswer);
+            
+            // Check if answer is correct and update the h1 element
+            if (userNumber === correctAnswer) {
+                resultElement.innerHTML = "Correct!";
+                resultElement.style.color = "green";
+            } else {
+                resultElement.innerHTML = "Incorrect! The correct answer was " + correctAnswer;
+                resultElement.style.color = "red";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <p>Run addition() from the console to get going.</p>
+    <h1 id="result"></h1>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lottery Ball Game</title>
+</head>
+<body>
+    <h1>Lottery Ball Game</h1>
+    
+    <script>
+        const balls = [];
+        for(let i = 0; i < 100; i++) {
+            const ball = {
+                color: Math.random() < 0.5 ? "red" : "white",
+                points: Math.floor(Math.random() * 101)
+            };
+            balls[i] = ball;
+        }
+        
+        let score = 0;
+        let gameOver = false;
+        
+        while(gameOver === false) {
+            let input = prompt("Enter a number from 0 to 99 (or type 'quit'):");
+            
+            if(input === "quit") {
+                alert("Game Over! Your score: " + score);
+                gameOver = true;
+            }
+            else {
+                let index = parseInt(input);
+                
+                if(index >= 0 && index <= 99 && balls[index] !== undefined) {
+                    let drawnBall = balls[index];
+                    
+                    alert("Ball #" + index + "\nColor: " + drawnBall.color + "\nPoints: " + drawnBall.points);
+                    
+                    if(drawnBall.color === "red") {
+                        score = score - drawnBall.points;
+                        alert("Red ball! Lose " + drawnBall.points + " points.\nGame Over! Your score: " + score);
+                        gameOver = true;
+                    }
+
+                    else {
+                        score = score + drawnBall.points;
+                        alert("White ball! Gain " + drawnBall.points + " points.\nYour score: " + score);
+                    }
+                    
+                    balls[index] = undefined;
+                }
+                else {
+                    alert("Invalid! Try again.");
+                }
+            }
+        }
+    </script>
+</body>
+</html>

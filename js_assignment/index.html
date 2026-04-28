@@ -1,0 +1,94 @@
+<!doctype html>
+<!--
+Author: Daniel Yu
+Date: 2026-02-27
+Description: Main HTML file for the 2D Perspective Platformer game "VANTAGE".
+Contains splash screen and game container with all UI elements.
+-->
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VANTAGE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesJSIndividual/jsIndivStyles.css">
+</head>
+
+<body>
+    <!-- Splash Screen -->
+    <div id="splash" class="splash">
+        <h1>VANTAGE</h1>
+        <canvas id="splashCanvas" width="400" height="400"></canvas>
+        <p id="splashMsg">LOADING . . .</p>
+        <button id="startBtn" class="hidden">START</button>
+    </div>
+
+    <!-- Main Game Container -->
+    <div id="gameContainer" class="hidden">
+        <header>
+            <h1>Tutorial</h1>
+            <div style="display: flex; align-items: center; gap: 5px;">
+                <div id="bestTime" style="margin-left: 10px;">--:--</div>
+                <div id="levelStars" style="display: flex; gap: 2px; margin-left: 10px;">
+                    <img src="imagesJsIndividual/emptyStar.png" class="star" id="star1">
+                    <img src="imagesJsIndividual/emptyStar.png" class="star" id="star2">
+                    <img src="imagesJsIndividual/emptyStar.png" class="star" id="star3">
+                </div>
+                <div id="levelStatus">level 1 / 3</div>
+                <button id="restartBtn" title="Restart level">↻</button>
+            </div>
+        </header>
+
+        <!-- Level navigation buttons -->
+        <button id="prevLevelBtn" class="hidden" title="Previous level">◀</button>
+        <button id="nextLevelBtn" class="hidden" title="Next level">▶</button>
+
+        <!-- Canvas wrapper -->
+        <div class="canvas-wrapper">
+            <canvas id="gameCanvas" width="400" height="700"></canvas>
+        </div>
+
+        <!-- Selection controls (appear when object selected) -->
+        <div id="selectionControls" class="selection-controls hidden">
+            <button id="zoomOutBtn" class="control-btn" title="Zoom Out">−</button>
+            <button id="zoomInBtn" class="control-btn" title="Zoom In">+</button>
+            <button id="rotateBtn" class="control-btn" title="Rotate">R</button>
+        </div>
+
+        <!-- Jump button -->
+        <button id="jumpBtn" class="jump-btn" title="Jump">↑</button>
+
+        <!-- Move buttons and Help -->
+        <button id="moveLeftBtn" class="move-btn" title="Move Left">←</button>
+        <button id="moveRightBtn" class="move-btn" title="Move Right">→</button>
+        <button id="helpBtn">?</button>
+
+        <!-- Help panel -->
+        <div id="helpPanel" class="hidden">
+            <h3>How to play</h3>
+            <p>Use buttons on screen to move or use W/A/D or arrow keys to move the character.</p>
+            <p>Tap an object to select it and drop it. Use the buttons to zoom in/out, rotate.</p>
+            <p>Use blocks to bridge gaps, create towers, etc., to reach the exit.</p>
+        </div>
+
+        <!-- Pause overlay -->
+        <div id="pauseOverlay" class="hidden"></div>
+
+        <!-- Game Over & History -->
+        <div id="gameover" class="hidden">
+            <h2>level complete!</h2>
+            <p id="finalMsg"></p>
+            <div id="history"></div>
+            <button id="replayBtn">play again</button>
+        </div>
+
+        <!-- Feedback message -->
+        <div id="feedback" class="hidden"></div>
+    </div>
+
+    <script src="javaScriptJSIndividual/jsIndivJS.js"></script>
+</body>
+
+</html>

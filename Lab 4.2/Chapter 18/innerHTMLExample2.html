@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Simple innerHTML Example</title>
+    <style>
+        div {
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        function changeDiv() {
+            let input = prompt("Please enter a positive integer:");
+            let num = parseInt(input);
+
+            // Validate input
+            if (isNaN(num) || num <= 0 || !Number.isInteger(num)) {
+                alert("Please enter a valid positive integer.");
+                return;
+            }
+
+            // Build HTML string with numbers in separate p elements
+            let htmlContent = "";
+            for (let i = 1; i <= num; i++) {
+                htmlContent += "<p>" + i + "</p>";
+            }
+
+            document.getElementById("target").innerHTML = htmlContent;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>A Simple Example</h1>
+    <div id='target' style="color:red">Here is some text in a div.</div>
+    <p>Open the console and run changeDiv() to change the div contents.
+        Then inspect the div element in the developer tools to see the new
+        elements that were created.</p>
+</body>
+
+</html>

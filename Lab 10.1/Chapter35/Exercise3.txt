@@ -1,0 +1,29 @@
+SELECT
+    SupplierID
+FROM
+    suppliers
+WHERE
+    SupplierName = 'Bigfoot Breweries';
+UPDATE
+    suppliers
+SET
+    ContactName = 'Mary Shelley',
+    Phone = '(503) 555-4242'
+WHERE
+    SupplierName = 'Bigfoot Breweries';
+SELECT
+    *
+FROM
+    suppliers
+WHERE
+    SupplierName = 'Bigfoot Breweries';
+UPDATE
+    orderdetails
+SET
+    Quantity = Quantity + 10;
+UPDATE
+    products
+SET
+    Price = Price * 0.5
+WHERE
+    Price > 10;

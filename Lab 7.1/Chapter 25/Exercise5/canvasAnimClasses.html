@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<!--
+Canvas Animation: 500 Balls with Bounce and Gravity
+Based on original by Sam Scott, McMaster, 2024
+-->
+<html>
+
+<head>
+    <title>500 Balls with Bounce and Gravity</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <style>
+        body {
+            text-align: center;
+            background: #111;
+        }
+
+        canvas {
+            background-color: black;
+            border: 2px solid #333;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id='animationCanvas' width='768' height='400' style='background-color:black;'></canvas>
+
+    <script>
+        class Ball {
+            constructor(x, y, xSpeed, ySpeed) {
+                this.x = x;
+                this.y = y;
+                this.xSpeed = xSpeed;
+                this.ySpeed = ySpeed;
+                this.red = 255;
+                this.green = 0;
+                this.blue = 0;
+                this.radius = 5;
+            }
+
+            setColor(red, green, blue) {
+                this.red = red;
+                this.green = green;
+                this.blue = blue;
+            }
+
+            moveOneStep() {
+                this.x += this.xSpeed;
+                this.y += this.ySpeed;
+            }
+
+            draw(ctx) {
+                ctx.fillStyle = "rgb(" + this.red + "," + this.green + "," + this.blue + ")";
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.fill();
+            }
+
+            // Bounce method: reverses speed if ball hits walls
+            bounce(leftWall, rightWall, topWall, bottomWall) {
+                if (this.x - this.radius < leftWall) {
+                    this.x = leftWall + this.radius;
+                    this.xSpeed = Math.abs(this.xSpeed);
+                }
+                if (this.x + this.radius > rightWall) {
+                    this.x = rightWall - this.radius;
+                    this.xSpeed = -Math.abs(this.xSpeed);
+                }
+                if (this.y - this.radius < topWall) {
+                    this.y = topWall + this.radius;
+                    this.ySpeed = Math.abs(this.ySpeed);
+                }
+                if (this.y + this.radius > bottomWall) {
+                    this.y = bottomWall - this.radius;
+                    this.ySpeed = -Math.abs(this.ySpeed);
+                }
+            }
+
+            // Gravity method: adds a constant to ySpeed
+            gravity(amount) {
+                this.ySpeed += amount;
+            }
+        }
+
+        window.addEventListener("load", function () {
+            const canvas = document.getElementById("animationCanvas");
+            const ctx = canvas.getContext("2d");
+
+            let balls = [];
+
+            // Create 500 balls with random properties
+            for (let i = 0; i < 500; i++) {
+                const radius = 5;
+                const x = Math.random() * (canvas.width - 2 * radius) + radius;
+                const y = Math.random() * (canvas.height - 2 * radius) + radius;
+
+                // Speed range -3 to 3 for more interesting motion
+                const xSpeed = (Math.random() * 6) - 3;
+                const ySpeed = (Math.random() * 6) - 3;
+
+                let ball = new Ball(x, y, xSpeed, ySpeed);
+
+                ball.setColor(
+                    Math.floor(Math.random() * 256),
+                    Math.floor(Math.random() * 256),
+                    Math.floor(Math.random() * 256)
+                );
+
+                balls.push(ball);
+            }
+
+            let timerId;
+
+            function startAnimation() {
+                timerId = setInterval(updateAnimation, 16);
+                console.log("Animation started with 500 balls (bounce + gravity)");
+            }
+
+            function stopAnimation() {
+                clearInterval(timerId);
+                console.log("Animation stopped");
+            }
+
+            function updateAnimation() {
+                // Apply gravity to each ball
+                for (let ball of balls) {
+                    ball.gravity(0.1);
+                }
+
+                // Move all balls
+                for (let ball of balls) {
+                    ball.moveOneStep();
+                }
+
+                // Bounce all balls off walls
+                for (let ball of balls) {
+                    ball.bounce(0, canvas.width, 0, canvas.height);
+                }
+
+                // Clear canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Draw all balls
+                for (let ball of balls) {
+                    ball.draw(ctx);
+                }
+            }
+
+            startAnimation();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!--
+Name: Shiza Afaqui
+Date: March 16, 2026
+Description: This HTML file provides the structure for the Polka Dot Game.
+It includes the splash screen, game canvas, score display, help section,
+and game over screen.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="js/game.js"></script>
+<title>Polka Dot Game</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<div id="splash">
+    <canvas id="splashCanvas"></canvas>
+
+    <div id="splashContent">
+        <h1>Polka Dot Game</h1>
+        <button id="startBtn">START</button>
+    </div>
+</div>
+
+<div id="score">0</div>
+
+<div id="helpContainer">
+    <button id="helpBtn">Help</button>
+    <div id="helpText">How To Play: Eat smaller dots to grow. Avoid getting eaten by bigger dots!</div>
+</div>
+
+<div id="gameOverScreen">
+    <h1>Game Over</h1>
+    <p id="finalScore"></p>
+    <button id="restartBtn">Play Again</button>
+</div>
+
+<canvas id="game"></canvas>
+
+</body>
+
+</html>

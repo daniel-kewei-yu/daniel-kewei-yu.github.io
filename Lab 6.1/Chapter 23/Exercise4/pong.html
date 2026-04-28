@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pong – Mouse Controlled Paddle</title>
+    <style>
+        body {
+            background: #1a2a32;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Courier New', monospace;
+            color: #bcd4de;
+        }
+
+        h1 {
+            margin-bottom: 0.2em;
+            letter-spacing: 4px;
+            color: #eef5f9;
+            text-shadow: 0 0 5px #80cbc4;
+        }
+
+        .instructions {
+            background: #0f1a1f;
+            padding: 10px 20px;
+            border-radius: 40px;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            border: 1px solid #3a5f6b;
+        }
+
+        canvas {
+            display: block;
+            border: 3px solid #3e6b7a;
+            border-radius: 8px;
+            box-shadow: 0 0 20px #1e3b44;
+            background: black;
+            /* canvas background set in JS, but fallback */
+        }
+
+        .note {
+            margin-top: 15px;
+            color: #8faebd;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>⚫ PONG ⚫</h1>
+    <div class="instructions">
+        🖱️ Move your mouse up/down to control the <span style="color:#ffb74d;">left paddle</span>
+    </div>
+    <canvas id="pongCanvas" width="800" height="400"></canvas>
+    <div class="note">
+        right paddle is static · net dashed · ball waiting for serve
+    </div>
+
+    <script>
+        window.addEventListener('load', function () {
+            const canvas = document.getElementById('pongCanvas');
+            const ctx = canvas.getContext('2d');
+
+            // fixed dimensions 
+            const PADDLE_WIDTH = 12;
+            const PADDLE_HEIGHT = 80;
+            const BALL_SIZE = 12;      // diameter
+            const NET_DASH = [20, 15];  // dash pattern
+
+            // paddle positions (x fixed)
+            const leftPaddleX = 30;
+            const rightPaddleX = canvas.width - 30 - PADDLE_WIDTH;
+
+            // initial y positions (centered)
+            let leftPaddleY = canvas.height / 2 - PADDLE_HEIGHT / 2;
+            const rightPaddleY = canvas.height / 2 - PADDLE_HEIGHT / 2;  // static
+
+            // ball position (center, not moving)
+            const ballX = canvas.width / 2;
+            const ballY = canvas.height / 2;
+
+            // draw function (uses current leftPaddleY) 
+            function drawGame() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // black background (ensured)
+                ctx.fillStyle = 'black';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // draw net (dashed line)
+                ctx.strokeStyle = 'white';
+                ctx.lineWidth = 3;
+                ctx.setLineDash(NET_DASH);
+                ctx.beginPath();
+                ctx.moveTo(canvas.width / 2, 10);
+                ctx.lineTo(canvas.width / 2, canvas.height - 10);
+                ctx.stroke();
+                ctx.setLineDash([]); // reset to solid (for other drawings)
+
+                // left paddle (mouse controlled) 
+                ctx.fillStyle = '#ffb74d'; // orange tint
+                ctx.fillRect(leftPaddleX, leftPaddleY, PADDLE_WIDTH, PADDLE_HEIGHT);
+
+                // right paddle (static) 
+                ctx.fillStyle = '#64b5f6'; // light blue
+                ctx.fillRect(rightPaddleX, rightPaddleY, PADDLE_WIDTH, PADDLE_HEIGHT);
+
+                // ball 
+                ctx.fillStyle = '#f5f5f5'; // near white
+                ctx.beginPath();
+                ctx.arc(ballX, ballY, BALL_SIZE / 2, 0, Math.PI * 2);
+                ctx.fill();
+                // subtle highlight
+                ctx.strokeStyle = '#aaa';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+
+                // score (top middle)
+                ctx.font = 'bold 36px "Courier New", monospace';
+                ctx.fillStyle = '#e0f2f1';
+                ctx.textAlign = 'center';
+                ctx.fillText('0  ·  0', canvas.width / 2, 60);
+                // small underline effect
+                ctx.strokeStyle = '#3a6e7a';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(canvas.width / 2 - 50, 75);
+                ctx.lineTo(canvas.width / 2 + 50, 75);
+                ctx.stroke();
+
+                // optional: paddle borders for style
+                ctx.strokeStyle = '#cfd8dc';
+                ctx.lineWidth = 1;
+                ctx.strokeRect(leftPaddleX, leftPaddleY, PADDLE_WIDTH, PADDLE_HEIGHT);
+                ctx.strokeRect(rightPaddleX, rightPaddleY, PADDLE_WIDTH, PADDLE_HEIGHT);
+            }
+
+            // mouse control for left paddle
+            function handleMouseMove(e) {
+                // get mouse position relative to canvas
+                const rect = canvas.getBoundingClientRect();
+                const scaleX = canvas.width / rect.width;   // canvas physical size vs CSS
+                const scaleY = canvas.height / rect.height;
+
+                const mouseY = (e.clientY - rect.top) * scaleY;
+
+                // clamp so paddle stays inside canvas
+                let newY = mouseY - PADDLE_HEIGHT / 2;
+                if (newY < 0) newY = 0;
+                if (newY + PADDLE_HEIGHT > canvas.height) newY = canvas.height - PADDLE_HEIGHT;
+
+                leftPaddleY = newY;
+
+                // redraw with updated paddle position
+                drawGame();
+            }
+
+            // attach mouse move listener
+            canvas.addEventListener('mousemove', handleMouseMove);
+
+            // initial draw
+            drawGame();
+
+            // optional: ensure canvas background stays black even if resize happens (no resize here)
+            console.log('Pong ready – move mouse over canvas to control left paddle.');
+        });
+    </script>
+</body>
+
+</html>

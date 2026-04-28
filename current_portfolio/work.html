@@ -1,0 +1,551 @@
+<!doctype html>
+<!--
+Description: Course Work and Project Showcase for CS 1XD3
+Author: Daniel Yu
+Date: January 2026
+-->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Course Work | Daniel Yu</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <div id="header" class="container">
+        <header>
+            <h1>Course Work</h1>
+            <p>Projects and Assignments from Level I Computer Science</p>
+        </header>
+    </div>
+
+    <div id="nav" class="container">
+        <nav>
+            <ul>
+                <li><a href="index.html">Back to Home</a></li>
+                <li><a href="journal.html">Learning Journal</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="content" class="container">
+        <main>
+
+            <!-- Lab 12.1 Section -->
+            <section id="lab121-work">
+                <h2>Lab 12.1 Work: PHP Session Management</h2>
+                <p>Applications that use PHP sessions to maintain state across multiple pages or AJAX requests. These
+                    exercises demonstrate how to store data on the server, track user progress, and destroy sessions
+                    when the game ends.</p>
+
+                <ul>
+                    <li>
+                        <a href="../Lab 12.1/Chapter40/Exercise2/index.html">Three‑Page Guessing Game</a>
+                        <p>A classic guessing game spread over three pages. On the first page, the user sets a numeric
+                            range. The second page generates a secret number (stored in <code>$_SESSION</code>) and asks
+                            for a guess. The third page reveals whether the guess was correct and destroys the session.
+                            Session management ensures the secret number is never exposed to the client.</p>
+                    </li>
+                    <li>
+                        <a href="../Lab 12.1/Chapter40/Exercise3/index.html">Extended Guessing Game – Try Again</a>
+                        <p>An enhancement of the three‑page game where the session persists until the user guesses
+                            correctly. If the guess is wrong, a “Try Again” link returns to the guess page with the same
+                            secret number. Only a correct guess destroys the session, allowing multiple attempts without
+                            reloading the range.</p>
+                    </li>
+                    <li>
+                        <a href="../Lab 12.1/Chapter40/Exercise8/index.php">Slot Machine with AJAX and Session</a>
+                        <p>A fully interactive slot machine that uses AJAX for spins and PHP sessions to track credits.
+                            The user starts with 10 credits, can bet any amount (subject to limits), and wins
+                            multipliers for two or three matching symbols. The session stores the current credits and is
+                            destroyed when the player runs out of money – the game ends automatically. Includes loading
+                            feedback and button constraints during AJAX requests.</p>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Lab 11.1 Section -->
+            <section id="lab111-work">
+                <h2>Lab 11.1 Work: AJAX and JSON Data Fetching</h2>
+                <p>Asynchronous web applications that fetch data from the server without reloading the page. These
+                    exercises demonstrate AJAX requests, JSON responses, and dynamic UI updates with loading feedback
+                    and constraints.</p>
+
+                <ul>
+                    <li>
+                        <a href="../Lab 11.1/Chapter38/Exercise2/index.html">Password Strength Checker (AJAX)</a>
+                        <p>Real‑time password validation using AJAX. As the user types, a PHP script checks length,
+                            uppercase, lowercase, digits, and symbols. The input border turns green/red instantly, and a
+                            loading spinner appears during the request. The input remains enabled while typing
+                            (debounced) and previous requests are cancelled.</p>
+                    </li>
+                    <li>
+                        <a href="../Lab 11.1/Chapter39/Exercise4/index.html">City Population Search (JSON)</a>
+                        <p>One‑page app that queries the world database for cities within a population range. The form
+                            sends min/max values via AJAX to a PHP endpoint that returns a JSON array of matching
+                            cities. While waiting, the search button is disabled and a loading spinner is shown. Results
+                            are displayed below the form in a clean, formatted list.</p>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Lab 10.1 Section -->
+            <section id="lab101-work">
+                <h2>Lab 10.1 Work: Advanced PHP and Database Integration</h2>
+                <p>Further exploration of PHP, including custom functions, array manipulation, and database access using
+                    PDO. These exercises build on the server-side foundations from Lab 9.1.</p>
+
+                <ul>
+                    <li>
+                        <a href="../Lab 10.1/Chapter35/Exercise1.txt">Exercise 1: PHP Function Library</a>
+                        <p>A collection of reusable PHP functions for common tasks such as input sanitization,
+                            validation, and mathematical operations. This exercise emphasizes modular code design and
+                            function reusability.</p>
+                    </li>
+                    <li>
+                        <a href="../Lab 10.1/Chapter35/Exercise2.txt">Exercise 2: Associative Arrays and Iteration</a>
+                        <p>Demonstrates the use of associative arrays to store and process structured data. Includes
+                            examples of sorting, filtering, and displaying array contents in HTML tables.</p>
+                    </li>
+                    <li>
+                        <a href="../Lab 10.1/Chapter35/Exercise3.txt">Exercise 3: File Handling and Includes</a>
+                        <p>Shows how to read from and write to files, and how to organise code using PHP include
+                            statements. A simple guestbook application lets users leave messages that persist across
+                            sessions.</p>
+                    </li>
+                    <li>
+                        <a href="../Lab 10.1/Chapter35/Exercise4.txt">Exercise 4: Form Processing with State</a>
+                        <p>A multi‑step form that maintains state across pages using hidden fields and sessions.
+                            Demonstrates techniques for wizard‑style interfaces and temporary data storage.</p>
+                    </li>
+                    <li>
+                        <a href="../Lab 10.1/Chapter36/Exercise4/polls.php">Poll Voting System (PDO)</a>
+                        <p>Interactive poll voting application built with PHP Data Objects (PDO). Users can vote by
+                            entering a poll ID and selecting an option; the script validates input, checks for available
+                            options, and updates the database securely using prepared statements. Full error reporting
+                            informs users why a vote could not be recorded.</p>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Lab 9.1 Section -->
+            <section id="lab91-work">
+                <h2>Lab 9.1 Work: Server-Side Scripting with PHP</h2>
+                <p>Introduction to server-side programming using PHP. These exercises demonstrate form handling,
+                    validation, and dynamic content generation.</p>
+
+                <ul>
+                    <li>
+                        <a href="../Lab 9.1/Chapter31/Exercise4/slotsMachineFruits.php">Slot Machine</a>
+                        <p>A simple slot machine simulation that randomly displays three fruit images. If two match, you
+                            win a small prize; all three match means jackpot. The page includes a "PUSH BUTTON" link to
+                            spin again.</p>
+                    </li>
+                    <li>
+                        <a href="../Lab 9.1/Chapter32/Exercise2/tipCalc.php">Tip Calculator</a>
+                        <p>A one-page app that calculates a restaurant tip. It validates server name, email (with
+                            confirmation), bill amount, tip percentage, and credit card number (16 digits). Errors are
+                            displayed clearly, and the form retains entered values.</p>
+                    </li>
+                    <li>
+                        <a href="../Lab 9.1/Chapter32/Exercise4/form.html">Multiplication Table Generator</a>
+                        <p>A configurable multiplication table. The form lets you set the table title, number of
+                            rows/columns, operation (x, +, -), and colors. Missing parameters default to 10x10 with
+                            multiplication. The generated table is styled and includes a warning when defaults are used.
+                        </p>
+                    </li>
+                    <li>
+                        <a href="../Lab 9.1/Chapter31/Exercise4/configurableSlotMachine.php">Configurable Slot
+                            Machine</a>
+                        <p>An enhanced slot machine where you can set the number of wheels (1-10) and a bet amount. If
+                            all wheels match, the payout is bet x 100 x number of wheels; if at least half match, the
+                            payout is bet x number of wheels. The form submits to itself and displays the result along
+                            with the spun fruit images.</p>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Lab 8.2 Section -->
+            <section id="lab82-work">
+                <h2>Lab 8.2 Work: Animation and Team Logo</h2>
+                <p>Collaborative exercises exploring canvas animations and creating an animated team logo. These
+                    projects were developed in partnership with Alex Chen.</p>
+
+                <ul>
+                    <li>
+                        <a href="../Lab 8.2/Chapter24/Exercise1/canvasAnim.html">Canvas Animation Warm-up</a>
+                        <p>A modified version of the basic canvas animation. The ball now moves down and to the right,
+                            shrinks gradually, and transitions from black to red as it moves. This exercise served as a
+                            warm-up to get comfortable with modifying existing animations and working collaboratively.
+                        </p>
+                        <ul>
+                            <li>Ball moves down and right (positive x and y speeds).</li>
+                            <li>Radius decreases over time for a shrinking effect.</li>
+                            <li>Red color component increases from 0 to 255, shifting from black to red.</li>
+                            <li>Maintains collision detection to stop at canvas edges.</li>
+                            <li>Demonstrates incremental changes to an existing codebase.</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="../Lab 8.2/TeamAnimation/teamAnim.html">Animated Team Logo - PixelForge</a>
+                        <p>A custom animated splash screen for our web development team, PixelForge. The animation
+                            features two independently moving objects (a square tracing a Lissajous curve and a circle
+                            in a circular orbit) over a subtle pixel-grid background, combined with the team name and
+                            tagline. Created collaboratively with Alex Chen.</p>
+                        <ul>
+                            <li>Two moving objects (square and circle) animated simultaneously using
+                                requestAnimationFrame.</li>
+                            <li>Each object is defined as a separate JavaScript class with update and draw methods.</li>
+                            <li>Static background grid reinforces the tech theme.</li>
+                            <li>Team name and tagline displayed in monospace font with glow effects.</li>
+                            <li>Color palette uses blues, purples, and white, matching the desired modern, clean
+                                aesthetic.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Lab 7.1 Section -->
+            <section id="lab71-work">
+                <h2>Lab 7.1 Work: Object-Oriented Programming and Client-side Storage</h2>
+                <p>A collection of exercises exploring JavaScript classes, objects, and persistent storage using
+                    localStorage. These projects demonstrate encapsulation, JSON serialization, and state management
+                    across browser sessions.</p>
+
+                <ul>
+                    <li>
+                        <a href="../Lab 7.1/Chapter 25/Exercise1/guess.html">Number Guessing Game with OOP</a>
+                        <p>A classic number guessing game implemented using a custom GuessingGame class. The game
+                            selects a random number and tracks the number of guesses, providing feedback on whether each
+                            guess is too high, too low, or correct. The game ends after 10 incorrect guesses and
+                            automatically resets upon a correct guess.</p>
+                        <ul>
+                            <li>Custom GuessingGame class with constructor and guess method.</li>
+                            <li>Tracks guess count and last guess result.</li>
+                            <li>Visual feedback with color-coded messages.</li>
+                            <li>Automatic reset after correct guess or 10 incorrect attempts.</li>
+                            <li>Clean, professional interface.</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="../Lab 7.1/Chapter 27/Exercise2/guess.html">Persistent Guessing Game with
+                            localStorage</a>
+                        <p>Enhancement of the guessing game that saves the game state to localStorage after every
+                            change. When the user returns to the page, the game resumes exactly where they left off,
+                            including the secret number, guess count, and last guess.</p>
+                        <ul>
+                            <li>Game state (secret number, guess count, last guess) saved as JSON in localStorage.</li>
+                            <li>Automatic restoration of previous game on page load.</li>
+                            <li>Game state cleared upon correct guess or game over to ensure a fresh start.</li>
+                            <li>Seamless integration with the existing OOP design.</li>
+                            <li>Demonstrates client-side persistence using localStorage.</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="../Lab 7.1/Chapter 25/Exercise5/canvasAnimClasses.html">500 Balls Animation with Bounce
+                            and Gravity</a>
+                        <p>A canvas animation featuring 500 randomly generated balls with individual colors, speeds, and
+                            positions. The Ball class has been extended with bounce and gravity methods, creating
+                            realistic bouncing arcs within the canvas boundaries.</p>
+                        <ul>
+                            <li>500 Ball objects created with random positions, speeds, and colors.</li>
+                            <li>Bounce method handles wall collisions, reversing speed components.</li>
+                            <li>Gravity method applies a constant downward acceleration.</li>
+                            <li>Continuous animation with requestAnimationFrame/setInterval.</li>
+                            <li>Demonstrates object-oriented design and canvas animation techniques.</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="../Lab 7.1/Chapter 27/MemoPad/memo.html">Mobile Memo Pad with 50 Pages</a>
+                        <p>A mobile-friendly memo application that stores up to 50 pages of text in localStorage. Users
+                            can navigate between pages, save changes, revert to saved content, and the app remembers the
+                            last viewed page across sessions.</p>
+                        <ul>
+                            <li>Textarea for entering memos, with Save and Revert buttons.</li>
+                            <li>50 pages stored as a JSON array in localStorage.</li>
+                            <li>Previous/Next buttons to flip through pages.</li>
+                            <li>Buttons are disabled when no changes are pending.</li>
+                            <li>Responsive design with a professional mobile aesthetic.</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="../Lab 7.1/Chapter 26/Exercise5/domExample.html">Interactive DOM Manipulation with
+                            Mouseover Deletion</a>
+                        <p>An advanced DOM manipulation example featuring buttons to add various elements (divs, link
+                            fragments, checkerboards) and a mouseover listener that deletes any div when hovered over.
+                            Demonstrates dynamic element creation and event handling.</p>
+                        <ul>
+                            <li>Button to add numbered divs that can be removed by mouseover.</li>
+                            <li>Button to insert a fragment containing a div with a link.</li>
+                            <li>Button to generate a 2x2 checkerboard using CSS Grid.</li>
+                            <li>Mouseover listener attached to all divs (existing and new) for deletion.</li>
+                            <li>Showcases DOM manipulation, event delegation, and CSS styling.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Lab 6.1 Section -->
+            <section id="lab61-work">
+                <h2>Lab 6.1 Work: Canvas Interaction and Drawing</h2>
+                <p>A series of canvas-based exercises exploring mouse and keyboard control, persistent drawing, and a
+                    complete paint application.</p>
+
+                <ul>
+                    <li>
+                        <a href="../Lab 6.1/Chapter 23/Exercise3/canvasTestBed4.html">Street View on a Starry Night</a>
+                        <p>A simple line-drawing tool that lets the user build a street scene step by step. Features
+                            include:</p>
+                        <ul>
+                            <li><strong>House drawing (Button 2):</strong> Each click adds a new house to the right of
+                                the previous one, using a persistent global variable to track the next x-coordinate.
+                            </li>
+                            <li><strong>Car drawing (Button 3):</strong> Places a simple car under the most recently
+                                drawn house.</li>
+                            <li><strong>Random star placement (Button 4):</strong> Draws a star at a random position in
+                                the “sky” (top part of the canvas) with a random bright colour each time the button is
+                                clicked.</li>
+                            <li>Clean, monochrome line style for houses and cars, while stars are filled with vibrant
+                                random hues.</li>
+                            <li>Boundary checking prevents houses from being drawn beyond the canvas edge.</li>
+                        </ul>
+                        <p>This lab exercise demonstrates canvas API usage, function modularisation, and state
+                            management with global variables.</p>
+                    </li>
+
+                    <li>
+                        <a href="../Lab 6.1/Chapter 23/Exercise4/pong.html">Pong with Mouse-Controlled Paddle</a>
+                        <p>A basic Pong simulation where the left paddle follows the mouse vertically. Features include:
+                        </p>
+                        <ul>
+                            <li>Canvas with black background, two paddles, a dashed net, a ball, and a score display at
+                                the top.</li>
+                            <li>Left paddle Y position updates in real-time using <code>mousemove</code> events.</li>
+                            <li>Right paddle remains static, demonstrating a simple two-player mock-up.</li>
+                            <li>All drawing is done inside the <code>load</code> event and redrawn on every mouse move.
+                            </li>
+                            <li>Highlights canvas drawing fundamentals and mouse-event handling.</li>
+                        </ul>
+                        <p>This exercise lays the groundwork for more advanced game loops and collision detection.</p>
+                    </li>
+
+                    <li>
+                        <a href="../Lab 6.1/Chapter 23/Exercise5/canvasTestBed4.html">Keyboard-Controlled Circle</a>
+                        <p>An extension of the street scene canvas where a green circle can be moved with the arrow
+                            keys. Features include:</p>
+                        <ul>
+                            <li>A green circle (radius 15) starts at the centre and moves 10px per arrow key press.</li>
+                            <li>All previously drawn houses, cars, and stars are stored in arrays and redrawn after each
+                                movement, preserving the scene.</li>
+                            <li>Arrow key events are captured and the circle's position is clamped to stay within the
+                                canvas.</li>
+                            <li>Integrates with the existing button-based drawing functions (houses, cars, stars)
+                                without interference.</li>
+                            <li>Demonstrates persistent state management and keyboard event handling alongside canvas
+                                drawing.</li>
+                        </ul>
+                        <p>This exercise shows how to combine multiple interaction modes in a single canvas application.
+                        </p>
+                    </li>
+
+                    <li>
+                        <a href="../Lab 6.1/Chapter 23/Exercise6/paintApp.html">Interactive Paint Application</a>
+                        <p>A fully-featured paint app with multiple brush types, color selection, and modifier keys,
+                            organised into separate HTML, CSS, and JavaScript files. Features include:</p>
+                        <ul>
+                            <li><strong>Four brush shapes/sizes:</strong> large/small circle and large/small square,
+                                drawn centred at the mouse.</li>
+                            <li><strong>Color picker:</strong> an <code>&lt;input type="color"&gt;</code> lets the user
+                                choose any drawing colour; the current colour is displayed in the status bar.</li>
+                            <li><strong>Controlled drawing:</strong> painting only occurs while the mouse button is held
+                                down (using <code>mousedown</code>/<code>mouseup</code> flags).</li>
+                            <li><strong>Eraser modifier:</strong> hold <kbd>Ctrl</kbd> while dragging to erase a square
+                                area (via <code>clearRect</code>).</li>
+                            <li><strong>Size doubling:</strong> hold <kbd>Alt</kbd> while drawing to temporarily double
+                                the current brush size.</li>
+                            <li><strong>Clear canvas:</strong> pressing <kbd>Backspace</kbd> or <kbd>Delete</kbd> (with
+                                confirmation) or the “clear canvas” button erases everything.</li>
+                            <li><strong>Modular code:</strong> HTML structure, CSS styling, and JavaScript logic are
+                                split into three files (<code>paintApp.html</code>, <code>paintStyles.css</code>,
+                                <code>paintJS.js</code>) for maintainability.</li>
+                        </ul>
+                        <p>This exercise brings together event handling, canvas manipulation, and a polished user
+                            interface - a strong foundation for the upcoming assignment.</p>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Lab 5.1 Section -->
+            <section id="lab51-work">
+                <h2>Lab 5.1 Work: JavaScript Events and Interactive Forms</h2>
+                <p>Interactive web applications created for Lab 5.1:</p>
+
+                <ul>
+                    <li>
+                        <a href="../Lab 5.1/Chapter 21/catchTheRabbit/catchTheRabbit.html">Catch the Rabbit Game</a>
+                        <p>An interactive game where players try to catch a rabbit that moves when hovered over.
+                            Features include:</p>
+                        <ul>
+                            <li>Event-driven programming with mouseover events</li>
+                            <li>DOM manipulation using visibility property</li>
+                            <li>Conditional messaging based on user attempts</li>
+                            <li>Circular movement pattern with four positions</li>
+                            <li>CSS visibility manipulation without layout shifts</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="../Lab 5.1/Chapter 22/Arithmetic/arithmetic.html">Arithmetic Calculator App</a>
+                        <p>A dynamic calculator that performs five arithmetic operations. Features include:</p>
+                        <ul>
+                            <li>Real-time calculation updates with input/change events</li>
+                            <li>Five operations: addition, subtraction, multiplication, division, and modulo</li>
+                            <li>Error handling for division by zero</li>
+                            <li>Clean interface with automatic result updating</li>
+                            <li>Form input validation and processing</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="../Lab 5.1/Chapter 22/Shopping/shopping-list.html">Interactive Shopping List</a>
+                        <p>A fully functional shopping list manager with add/delete functionality. Features include:</p>
+                        <ul>
+                            <li>Dynamic array management for list items</li>
+                            <li>Add items via text input with Enter key support</li>
+                            <li>Delete individual items with dedicated buttons</li>
+                            <li>Automatic re-rendering of list after modifications</li>
+                            <li>Empty state handling and visual feedback</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Lab 4.2 Section -->
+            <section id="lab42-work">
+                <h2>Lab 4.2 Work: DOM Manipulation Exercises</h2>
+                <p>Interactive web applications created for Lab 4.2:</p>
+
+                <ul>
+                    <li>
+                        <a href="../Lab 4.2/Chapter 18/addition.html">Addition Quiz with DOM Feedback</a>
+                        <p>A modified addition quiz that uses DOM manipulation to provide visual feedback instead of
+                            alert boxes. Features include:</p>
+                        <ul>
+                            <li>Random arithmetic problems with numbers from -100 to 100</li>
+                            <li>Real-time feedback displayed directly on the webpage</li>
+                            <li>Color-coded results (green for correct, red for incorrect)</li>
+                            <li>Input validation with special styling for invalid entries</li>
+                            <li>CSS class manipulation for dynamic styling</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="../Lab 4.2/Chapter 19/moveme.html">Interactive Circle Movement Game</a>
+                        <p>A DOM manipulation exercise featuring a movable circle within a bounded container. Features
+                            include:</p>
+                        <ul>
+                            <li>Two movement modes: random positioning and directional movement</li>
+                            <li>Complete bounds checking to prevent moving outside the container</li>
+                            <li>Real-time position tracking using JavaScript variables</li>
+                            <li>User interaction through confirm and prompt dialogs</li>
+                            <li>Dynamic CSS property manipulation for positioning</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="../Lab 4.2/Chapter 18/innerHTMLExample2.html">Dynamic Number Display</a>
+                        <p>A DOM manipulation exercise that dynamically generates content based on user input:</p>
+                        <ul>
+                            <li>Prompts user for a positive integer</li>
+                            <li>Dynamically creates paragraph elements for each number</li>
+                            <li>Updates DOM content in real-time using innerHTML</li>
+                            <li>Demonstrates string processing within loops for content generation</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Lab 4.1 Section -->
+            <section id="lab41-work">
+                <h2>Lab 4.1 Work</h2>
+                <p>Interactive JavaScript applications created for Lab 4.1:</p>
+
+                <ul>
+                    <li>
+                        <a href="../Lab 4.1/Chapter16/index.html">Arithmetic Quiz Application</a>
+                        <p>A dynamic math quiz that generates random arithmetic problems (-100 to 100) and provides
+                            immediate feedback. Features include persistent questioning until correct answers, score
+                            tracking, and option to continue or quit.</p>
+                    </li>
+                    <li>
+                        <a href="../Lab 4.1/Chapter 17/index.html">Lottery Ball Game</a>
+                        <p>An interactive lottery simulation with 100 randomly generated ball objects (red/white with
+                            values 0-100). Players draw balls by index, accumulate points from white balls, and lose
+                            points on red balls. Includes input validation and duplicate prevention.</p>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects">
+                <h2>Current Projects</h2>
+
+                <article>
+                    <h3>CS 1XD3: Assignment 1</h3>
+                    <p>
+                        View my first official coursework here:
+                        <a href="../layout/index.html">Assignment 1 - Layout</a>
+                    </p>
+                </article>
+
+                <article>
+                    <h3>CS 1XD3: Interactive Web Portfolio</h3>
+                    <p>
+                        Developing a personal professional website using HTML5 and CSS3.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>More Coming Soon...</h3>
+                    <p>
+                        :))))))
+                    </p>
+                </article>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills">
+                <h2>Technical Skills</h2>
+                <ul>
+                    <li>Java</li>
+                    <li>Python</li>
+                    <li>Haskell</li>
+                    <li>OnShape</li>
+                    <li>SketchUp</li>
+                    <li>AutoCad</li>
+                    <li>JavaScript</li>
+                    <li>HTML5/CSS3</li>
+                    <li>DOM Manipulation</li>
+                    <li>Interactive Web Development</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <div id="footer" class="container">
+        <footer>
+            <p>&copy; 2026 Daniel Yu | McMaster University</p>
+        </footer>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+/*
+Name: Shiza Afaqui
+Date: March 16, 2026
+Description: This CSS file styles the Polka Dot Game including colours, text size, 
+visual apperance, etc. 
+*/
+
+body {
+    margin: 0;
+    overflow: hidden;
+    background: #dddddd;
+}
+
+canvas {
+    display: block;
+}
+
+#score {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    font-family: Arial, sans-serif;
+    color: white;
+    font-weight: bold;
+}
+
+#splash {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(white, rgb(237, 230, 230), rgb(133, 133, 133));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#splashCanvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#splashContent {
+    position: relative;
+    text-align: center;
+    color: rgb(43, 44, 50);
+    z-index: 2;
+}
+
+#splashContent h1 {
+    font-size: 45px;
+    margin-bottom: 20px;
+    font-family: 'Arial Black', sans-serif;
+    text-shadow: 0 0 15px rgba(0, 1, 0, 0.8);
+}
+
+#startBtn {
+    padding: 15px 40px;
+    font-size: 20px;
+    border: none;
+    border-radius: 30px;
+    background: #ff6b6b;
+    color: white;
+    cursor: pointer;
+}
+
+#startBtn:active {
+    transform: scale(0.95);
+}
+
+#helpBtn {
+    padding: 20px;
+}
+
+#helpContainer {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+#helpText {
+    display: none;
+    margin-top: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: Arial;
+}
+
+#gameOverScreen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 15px;
+    display: none;
+    font-family: Arial;
+}
+
+#gameOverScreen button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    background: #ff6b6b;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}

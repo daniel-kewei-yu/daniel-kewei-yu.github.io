@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing Game · OOP</title>
+    <link rel="stylesheet" href="guessStyles.css">
+</head>
+
+<body>
+    <div class="game-container">
+        <h1>GUESSING GAME · OOP</h1>
+
+        <div id="gameDisplay" class="game-status">
+            <div class="game-render" id="renderArea">
+            </div>
+        </div>
+
+        <div id="feedbackMessage" class="feedback">enter a guess</div>
+
+        <form id="guessForm" class="guess-form">
+            <input type="number" id="guessInput" placeholder="your guess (1–100)" min="1" max="100" required autofocus>
+            <button type="submit">guess</button>
+        </form>
+
+        <button id="newGameBtn" class="new-game-btn">new game</button>
+        <hr>
+        <small>10 incorrect guesses → game over · correct guess resets</small>
+    </div>
+
+    <script src="guessJS.js"></script>
+</body>
+
+</html>

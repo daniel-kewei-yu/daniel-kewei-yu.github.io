@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetic Quiz</title>
+</head>
+
+<body>
+    <h1>Arithmetic Quiz</h1>
+    <p>Answer the arithmetic problems until you choose to stop.</p>
+
+    <script>
+        function generateRandomNumber() {
+            // Generates a random integer between -100 and 100
+            return Math.floor(Math.random() * 201) - 100;
+        }
+
+        function askQuestion() {
+            const num1 = generateRandomNumber();
+            const num2 = generateRandomNumber();
+            const correctAnswer = num1 + num2;
+            let userAnswer;
+
+            // Keep asking the same question until the user gets it right
+            while (true) {
+                userAnswer = prompt(`What is ${num1} + ${num2}? (Type 'quit' to exit)`);
+
+                // Allow user to quit early
+                if (userAnswer === null || userAnswer.toLowerCase() === 'quit') {
+                    alert('Thanks for playing!');
+                    return false; // Indicates the user wants to stop
+                }
+
+                // Check if the answer is correct
+                if (parseInt(userAnswer) === correctAnswer) {
+                    alert('Correct! 🎉');
+                    break; // Exit the loop and move to the next question
+                } else {
+                    alert('Incorrect. Try again!');
+                }
+            }
+
+            // Ask if the user wants another question
+            const anotherQuestion = confirm('Would you like another question?');
+            if (anotherQuestion) {
+                return true; // Continue with another question
+            } else {
+                alert('Thanks for playing! Goodbye!');
+                return false; // Stop the quiz
+            }
+        }
+
+        // Start the quiz
+        let keepAsking = true;
+        while (keepAsking) {
+            keepAsking = askQuestion();
+        }
+    </script>
+</body>
+
+</html>

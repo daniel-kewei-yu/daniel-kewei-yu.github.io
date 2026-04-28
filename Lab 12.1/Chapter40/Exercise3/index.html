@@ -1,0 +1,31 @@
+<!-- 
+Author: Daniel Yu
+Date Created: 2026-03-30
+Description: First page of guessing game. User enters min and max
+to define the range for a random secret number.
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guessing Game – Set Range</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 500px; margin: 2rem auto; padding: 1rem; }
+        input, button { padding: 0.5rem; margin: 0.5rem 0; width: 100%; box-sizing: border-box; }
+    </style>
+</head>
+<body>
+    <h1>🔢 Guessing Game</h1>
+    <p>Enter a numeric range, and I'll pick a secret number for you to guess.</p>
+
+    <form action="game.php" method="POST">
+        <label for="min">Minimum:</label>
+        <input type="number" id="min" name="min" required>
+
+        <label for="max">Maximum:</label>
+        <input type="number" id="max" name="max" required>
+
+        <button type="submit">Start Game</button>
+    </form>
+</body>
+</html>

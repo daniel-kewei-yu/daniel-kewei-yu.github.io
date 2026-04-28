@@ -1,0 +1,153 @@
+/* Portfolio Stylesheet */
+
+* {
+    background-color: rgb(238, 231, 231);
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Header + Nav Bar */
+#header {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 8%;
+    padding-right: 12%;
+    padding-top: 2%;
+}
+
+#nav {
+    display: flex;
+    gap: 15%;
+}
+
+#name p {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Page layout */
+#content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tile {
+    padding: 60px 20px;
+}
+
+/* Home section */
+#home h1 {
+    padding-top: 90px;
+    font-size: 44px;
+}
+
+#home h2 {
+    margin: 12px 0 0 0;
+    font-size: 18px;
+    opacity: 0.7;
+}
+
+#home p {
+    font-size: 16px;
+}
+
+/* Button link */
+.buttons {
+    margin-top: 26px;
+    padding: 20px;
+    border-radius: 999px;
+    font-weight: 600;
+    display: inline-block;
+    background-color: transparent;
+    border: 2px solid black;
+}
+
+/* About Me Section */
+
+#about-me {
+    font-size: 16px;
+}
+
+.about-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.about-text {
+  width: 70%; 
+  font-size: 16px; 
+}
+
+.about-image {
+  width: 30%;
+  text-align: right;
+}
+
+.about-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Skills Section */
+.skill-containers {
+    display: flex;
+    justify-content: space-between;
+    gap: 5%;
+}
+
+.skill {
+    text-align: center;
+    padding: 10px;
+    border: 3px solid rgb(0, 0, 0);
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 30px;
+    width: 25%;
+}
+
+.skill h1 {
+    font-size: 20px;
+}
+
+/* Footer */
+#footer {
+    padding: 30px 0;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+span.school {
+  font-weight: bold;
+  color: #b04f8d;
+  opacity: 100%;
+}
+
+@media (max-width: 600px) {
+
+  #header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #nav {
+    justify-content: center;
+    gap: 18px;
+  }
+
+  /* Title sizing */
+  #home h1 {
+    font-size: 32px;
+    padding-top: 40px;
+  }
+
+  .tile {
+    padding: 50px 16px;
+  }
+}

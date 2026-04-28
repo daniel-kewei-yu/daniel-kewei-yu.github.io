@@ -1,0 +1,175 @@
+<!--
+Name: Shiza Afaqui & Leena Matheen 
+Date: February 27, 2026
+Description: Main HTML file for the Shawarma Clicker game. 
+It structures the layout of the game, including the shawarma button, 
+upgrade buttons, scoreboard, rewards section, and help button.
+-->
+<!doctype html>
+<html>
+
+<head>
+ <meta charset="utf-8">
+ <title>Shawarma Clicker Game!</title>
+ <link rel="stylesheet" href="css/style.css">
+ <script src="js/script.js"></script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Caesar+Dressing&display=swap" rel="stylesheet">
+</head>
+
+<body>
+ <section id="Total">
+
+   <!-- Scoreboard -->
+   <section id="ScoreboardSection">
+
+     <div id="ScoreboardImage"></div>
+     
+     <div id="Scoreboard">
+       <h2 class="pillar-title">SCOREBOARD</h2>
+
+       <div class="score-label">SHAWARMAS</div>
+       <div class="score-value" id="shawarmaValue">0</div>
+
+       <div class="score-divider"></div>
+
+       <div class="score-label">CLICK VALUE</div>
+       <div class="score-value" id="clickValue">1</div>
+
+       <div class="score-divider"></div>
+
+       <div class="score-label">UPGRADES</div>
+       <div class="score-value score-small" id="upgradeValue">
+         Pickle x0  |  Sauce x0  |  Fries x0
+       </div>
+
+       <div class="score-divider"></div>
+
+       <div class="score-label">AUTO-CLICKER</div>
+       <div class="score-value score-small" id="autoValue">OFF</div>
+
+       <div class="score-divider"></div>
+
+       <!-- Progress Bar -->
+       <div class="score-label">NEXT ACHIEVEMENT</div>
+
+       <div id="progressContainer">
+         <div id="progressBar"></div>
+       </div>
+
+       <div id="progressText" class="score-small"></div>
+
+     </div>
+
+   </section>
+
+   <!-- Main Middle Area -->
+   <section id="MainAreaSection">
+
+     <!-- Upgrades Section -->
+     <section id="UpgradeContainer">
+       <div class="UpgradeImage"></div>
+
+       <div class="UpgradeArea">
+
+         <div class="buttonContainer">
+           <button type="button" class="upgrader">
+             <img src="images/pickle.png" width="60px" height="50px">
+             <span>PICKLE</span>
+             <span>UPGRADER</span>
+             <span class="upgrade-cost" id="pickleCostDisplay">(10 shawarmas)</span>
+           </button>
+         </div>
+
+         <div class="buttonContainer">
+           <button type="button" class="upgrader">
+             <img src="images/hotsauce.png" width="60px" height="50px">
+             <span>HOT SAUCE</span>
+             <span>UPGRADER</span>
+             <span class="upgrade-cost" id="hotsauceCostDisplay">(25 shawarmas)</span>
+           </button>
+         </div>
+
+         <div class="buttonContainer">
+           <button type="button" class="upgrader">
+             <img src="images/fries.png" width="60px" height="50px">
+             <span>FRIES</span>
+             <span>UPGRADER</span>
+             <span class="upgrade-cost" id="friesCostDisplay">(60 shawarmas)</span>
+           </button>
+         </div>
+
+         <div class="buttonContainer">
+           <button type="button" class="upgraderspeed">
+             <img src="images/clicker.png" width="60px" height="40px">
+             <span>AUTO</span>
+             <span>CLICKER</span>
+             <span class="upgrade-cost" id="autoCostDisplay">(15 shawarmas)</span>
+           </button>
+         </div>
+
+       </div>
+     </section>
+
+     <!-- Clicker Area -->
+     <div class="ClickerScreen">
+       <button type="button" id="shawarmaButton">
+         <img src="images/button.png" width="100%">
+       </button>
+
+       <section id="shawarmaCounter">
+         <div id="shawarmaDisplayScroll"></div>
+         <div id="shawarmaDisplay">
+           You have <span id="count">0</span> Shawarmas!
+         </div>
+       </section>
+     </div>
+
+   </section>
+
+   <!-- Rewards / Achievements -->
+   <section id="RewardsSection">
+     <div id="RewardsImage"></div>
+
+     <div id="Rewards">
+       <h2 class="pillar-title">ACHIEVEMENTS</h2>
+       <div id="rewardContent"></div>
+     </div>
+   </section>
+
+ </section>
+
+ <!-- Help Button -->
+ <button type="button" id="help-btn">HELP</button>
+
+ <div id="help-overlay">
+   <div id="help-box">
+     <h2>Instructions</h2>
+     <p>Click the shawarma to make shawarmas. The more shawarmas you have, the more upgrades you can buy. Good luck!</p>
+
+     <h3>Upgrade Info</h3>
+     <div>Pickle: +1 click value</div>
+     <div>Hot Sauce: +3 click value</div>
+     <div>Fries: +8 click value</div>
+     <div>Auto Clicker: speeds up each purchase</div>
+
+     <h3>Achievement Info</h3>
+     <div>Roll Rookie: Make your first shawarma</div>
+     <div>Kitchen Helper: Make 100 shawarmas</div>
+     <div>Grill Master: Make 1,000 shawarmas</div>
+     <div>Shawarma Sultan: Make 10,000 shawarmas</div>
+     <div>The Chosen One of the Grill: Make 100,000 shawarmas</div>
+     <div>Pickle Enthusiast: Purchase 10 pickle upgrades</div>
+     <div>Sauce Specialist: Purchase 10 hot sauce upgrades</div>
+     <div>Fry Commander: Purchase 10 fries upgrades</div>
+     <div>Speed Demon: Purchase 5 auto-clickers</div>
+
+     <button type="button" id="close-help">CLOSE</button>
+   </div>
+ </div>
+
+ <div id="popup-msg" style="display:none;"></div>
+
+</body>
+</html>

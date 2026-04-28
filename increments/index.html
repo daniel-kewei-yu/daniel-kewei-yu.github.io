@@ -1,0 +1,115 @@
+<!--
+Authors: Daniel and Abdullah
+Date: 2026-02-18
+Description: The html file for the Banana Empire Incremental Game
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banana Empire · incremental</title>
+    <link rel="stylesheet" href="cssIncrements/stylesIncrement.css">
+</head>
+
+<body>
+    <div class="outer-wrapper">
+        <div class="game-container">
+            <!-- Help button in top right corner -->
+            <button id="helpButton" class="help-button">?</button>
+
+            <!-- Left column: main click area and statistics -->
+            <div class="left-column">
+                <h1 class="main-title">BANANA EMPIRE</h1>
+                <div class="stats-box">
+                    <div class="stat-row"><span>bananas</span> <span id="bananaCount">0</span></div>
+                    <div class="stat-row"><span>click value</span> <span id="clickValue">1</span></div>
+                    <div class="stat-row"><span>auto level</span> <span id="autoLevel">0</span></div>
+                    <div class="stat-row"><span>manual clicks</span> <span id="manualClicks">0</span></div>
+                </div>
+                <div class="banana-section">
+                    <img src="imagesIncrements/bananaClick.png" alt="Banana" class="banana-image" id="bananaImage">
+                </div>
+            </div>
+
+            <!-- Middle column: displays current cps upgrade and trophies -->
+            <div class="middle-column">
+                <!-- Cps visual is hidden until first upgrade purchased -->
+                <div class="cps-visual" id="cpsVisualContainer" style="display: none;">
+                    <img id="cpsVisualImage" src="" alt="Current CPS Upgrade" class="cps-image">
+                </div>
+                <!-- Trophy area showing unlocked badges -->
+                <div class="rewards-wrapper">
+                    <h2 class="column-title">🏆 Trophies <span id="trophyCount">(0/5)</span></h2>
+                    <div id="rewardsContainer" class="rewards-container"></div>
+                </div>
+            </div>
+
+            <!-- Right column: upgrade cards for cps and auto-clicker -->
+            <div class="right-column">
+                <h2 class="column-title">Upgrades</h2>
+
+                <!-- Cps upgrade card (dynamic content updated by javascript) -->
+                <div class="upgrade-card" id="cpsUpgradeCard">
+                    <img src="imagesIncrements/CPSUpgrades/peelingMonkey.png" alt="" class="upgrade-image"
+                        id="cpsUpgradeImage">
+                    <div class="upgrade-info">
+                        <h3 id="cpsUpgradeName">Peeling Monkey</h3>
+                        <p id="cpsUpgradeDesc">increases click value to 2</p>
+                        <p class="cost">cost: <span id="cpsUpgradeCost">25</span></p>
+                        <button id="cpsUpgradeButton" class="upgrade-button">purchase</button>
+                    </div>
+                </div>
+
+                <!-- Auto-clicker card for purchasing and upgrading -->
+                <div class="upgrade-card" id="autoClickerCard">
+                    <img src="imagesIncrements/bananaCursor.png" alt="Auto-Clicker" class="upgrade-image">
+                    <div class="upgrade-info">
+                        <h3 id="autoClickerTitle">auto-clicker (not owned)</h3>
+                        <p id="autoClickerDesc">first purchase: clicks every 30s</p>
+                        <p class="cost">cost: <span id="autoClickerCost">100</span></p>
+                        <button id="autoClickerButton" class="upgrade-button">purchase</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Congratulations message appears temporarily when trophies are earned -->
+        <div id="congratsMessage" class="congrats-message hidden"></div>
+
+        <!-- Help panel with game instructions (hidden by default) -->
+        <div id="helpPanel" class="help-panel hidden">
+            <h3>How to play</h3>
+            <p>Click the banana -> earn bananas -> buy upgrades</p>
+            <h4>CPS upgrades (7 levels)</h4>
+            <ul>
+                <li>Peeling monkey</li>
+                <li>Smoothie blender</li>
+                <li>Tropical plantations</li>
+                <li>Potassium mine</li>
+                <li>Banana republic</li>
+                <li>Banana space station</li>
+                <li>Prehistoric banana</li>
+            </ul>
+            <h4>Auto-clicker</h4>
+            <ul>
+                <li>Purchase -> every 30s</li>
+                <li>Upgrade -> speed +20%, cost +20%</li>
+            </ul>
+            <h4>Trophies (5)</h4>
+            <ul>
+                <li>🏆 No Life: 1,000,000,000 bananas</li>
+                <li>🖐️ Stop Clicking: 20,000 manual clicks</li>
+                <li>⏳ Time is Gone: reach CPS level 7</li>
+                <li>😌 Fingers Rest: buy auto-clicker</li>
+                <li>🐒 Ooh ooh Ah ah: buy peeling monkey</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="jsIncrements/javaScriptIncrements.js"></script>
+</body>
+
+</html>

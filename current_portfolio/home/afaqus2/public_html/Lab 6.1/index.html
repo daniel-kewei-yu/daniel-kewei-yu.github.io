@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Canvas Test Bed</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <style type="text/css">
+        #testCanvas {
+            background-color: rgb(255, 255, 255);
+            margin: 30px;
+        }
+
+        body {
+            text-align: center;
+            color: rgb(255, 255, 255);
+            background-color: rgb(255, 193, 246);
+        }
+    </style>
+
+    <script>
+        window.addEventListener("load", function () {
+            const canvas = document.getElementById("testCanvas");
+            const ctx = canvas.getContext("2d");
+
+            let houseX = 10; // x for next house
+            
+            // --- DRAW FUNCTIONS ---
+            function drawHouse(x, y) {
+                // House body
+                ctx.fillStyle = "red";
+                ctx.fillRect(x, y, 50, 50);
+
+                // Roof
+                ctx.fillStyle = "pink";
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                ctx.lineTo(x + 25, y - 30);
+                ctx.lineTo(x + 50, y);
+                ctx.closePath();
+                ctx.fill();
+            }
+
+            function drawNextHouse() {
+                drawHouse(houseX, 50); // y-position for house
+                houseX += 60; // move right for next house
+            }
+
+            function drawCar(x, y) {
+                // Car body
+                ctx.fillStyle = "orange";
+                ctx.fillRect(x, y, 50, 25);
+                // Wheels
+                ctx.fillStyle = "black";
+                ctx.beginPath();
+                ctx.arc(x + 10, y + 25, 5, 0, Math.PI * 2); // left wheel
+                ctx.arc(x + 40, y + 25, 5, 0, Math.PI * 2); // right wheel
+                ctx.fill();
+            }
+
+            function drawNextCar() {
+                   if (houseX > 10) {  
+                    let latestHouseX = houseX - 60;
+                    drawCar(latestHouseX, 110);
+                }
+            }
+
+            function drawStar() {
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * 40; // top of canvas = sky
+                ctx.fillStyle = "pink";
+                ctx.beginPath();
+                ctx.arc(x, y, 3, 0, Math.PI * 2); // small circle
+                ctx.fill();
+            }
+
+            function drawCheckerboard() {
+                const size = 20; // size of each square
+                for (let i = 0; i < 8; i++) {
+                    for (let j = 0; j < 4; j++) {
+                        ctx.fillStyle = (i + j) % 2 === 0 ? "black" : "white";
+                        ctx.fillRect(i * size, j * size, size, size);
+                    }
+                }
+            }
+
+            // --- BUTTON EVENT LISTENERS ---
+            document.querySelector('input[value="Button 1"]').addEventListener("click", drawCheckerboard);
+            document.querySelector('input[value="Button 2"]').addEventListener("click", drawNextHouse);
+            document.querySelector('input[value="Button 3"]').addEventListener("click", drawNextCar);
+            document.querySelector('input[value="Button 4"]').addEventListener("click", drawStar);
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Canvas Test Bed</h1>
+    <canvas id="testCanvas" width="400" height="200"></canvas>
+    <br>
+    <input type="button" value="Button 1">
+    <input type="button" value="Button 2">
+    <input type="button" value="Button 3">
+    <input type="button" value="Button 4">
+</body>
+
+</html>

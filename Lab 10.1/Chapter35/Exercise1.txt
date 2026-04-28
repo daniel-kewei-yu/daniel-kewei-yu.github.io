@@ -1,0 +1,28 @@
+SELECT
+    *
+FROM
+    orderdetails;
+SELECT
+    *
+FROM
+    orderdetails
+WHERE
+    OrderID = 10281;
+SELECT
+    ProductID
+FROM
+    orderdetails
+WHERE
+    Quantity > 90
+ORDER BY
+    Quantity
+DESC
+    ;
+SELECT
+    ProductID
+FROM
+    orderdetails
+ORDER BY
+    Quantity
+DESC
+LIMIT 1;

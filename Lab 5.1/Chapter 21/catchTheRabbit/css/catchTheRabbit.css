@@ -1,0 +1,31 @@
+/* 
+    Document   : catchTheRabbit
+    Created on : 22-May-2012, 5:00:01 PM
+    Author     : Sam Scott
+    Description:
+        Style sheet for Catch the Rabbit
+*/
+
+body {
+    text-align: center;
+    font-size: 100%;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+/* Hide all messages initially */
+#noeggs,
+#slow {
+    visibility: hidden;
+}
+
+/* Position rabbits inline so they appear to be in a row */
+img {
+    display: inline-block;
+}

@@ -1,0 +1,163 @@
+/* 
+ * Author: Daniel Yu
+ * Date Created: 2026-03-30
+ * Description: Styling for the password strength checker.
+ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+}
+
+.card {
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 6px 12px rgba(0, 0, 0, 0.05);
+    max-width: 550px;
+    width: 100%;
+    padding: 32px;
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+h1 {
+    font-size: 28px;
+    color: #2d3748;
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.subtitle {
+    text-align: center;
+    color: #718096;
+    margin-bottom: 24px;
+    font-size: 15px;
+}
+
+.requirements {
+    background: #f7fafc;
+    border-radius: 16px;
+    padding: 16px 24px;
+    margin-bottom: 32px;
+    border-left: 4px solid #667eea;
+}
+
+.requirements p {
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 8px;
+}
+
+.requirements ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.requirements li {
+    margin: 8px 0;
+    color: #4a5568;
+    font-size: 14px;
+}
+
+.input-group {
+    margin-top: 16px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #2d3748;
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+input {
+    width: 100%;
+    padding: 12px 40px 12px 16px;
+    font-size: 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    transition: all 0.2s;
+    background: white;
+    font-family: monospace;
+}
+
+input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+input.strong {
+    border-color: #2b7a4b;
+    background-color: #f0fdf4;
+}
+
+input.weak {
+    border-color: #c92a2a;
+    background-color: #fff5f5;
+}
+
+.loading-spinner {
+    position: absolute;
+    right: 12px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #e2e8f0;
+    border-top-color: #667eea;
+    border-radius: 50%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s;
+}
+
+.loading-spinner.active {
+    opacity: 1;
+    visibility: visible;
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.feedback {
+    margin-top: 12px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.strong-icon, .weak-icon {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+@media (max-width: 600px) {
+    .card {
+        padding: 24px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+}

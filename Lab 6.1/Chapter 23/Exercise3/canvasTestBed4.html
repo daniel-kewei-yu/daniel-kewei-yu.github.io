@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Canvas Test Bed</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <style type="text/css">
+        #testCanvas {
+            background-color: silver;
+            margin: 30px;
+        }
+
+        body {
+            text-align: center;
+            color: silver;
+            background-color: rgb(53, 66, 29);
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function () {
+            // Get canvas and drawing context
+            const canvas = document.getElementById('testCanvas');
+            const ctx = canvas.getContext('2d');
+
+            // Global State
+            // For houses: start drawing from x = 30, each house is 60px wide, with 10px gap
+            let nextHouseX = 30;           // x-coordinate for the next house (left side)
+            const HOUSE_WIDTH = 60;
+            const HOUSE_BASE_HEIGHT = 60;  // height of the main rectangular part
+            const ROOF_HEIGHT = 30;
+            const GROUND_Y = 300;           // where the ground line is (house sits on it)
+
+            // Remember the most recently drawn house's x (left side) to place cars under it
+            let lastHouseX = null;           // will be updated after each house draw
+
+            // Drawing Functions
+
+            /**
+             * Draw a simple line house at given x (left side).
+             * House sits on the ground (GROUND_Y). Updates lastHouseX.
+             */
+            function drawHouse(x) {
+                // Base rectangle (house body)
+                const baseTopY = GROUND_Y - HOUSE_BASE_HEIGHT; // e.g. 300-60=240
+                ctx.strokeStyle = 'black';
+                ctx.lineWidth = 2;
+
+                // Draw base outline
+                ctx.strokeRect(x, baseTopY, HOUSE_WIDTH, HOUSE_BASE_HEIGHT);
+
+                // Draw roof (triangle)
+                ctx.beginPath();
+                ctx.moveTo(x, baseTopY);                     // left top corner of base
+                ctx.lineTo(x + HOUSE_WIDTH / 2, baseTopY - ROOF_HEIGHT); // peak
+                ctx.lineTo(x + HOUSE_WIDTH, baseTopY);        // right top corner
+                ctx.closePath();
+                ctx.stroke();
+
+                // Draw door (small rectangle)
+                const doorWidth = 20;
+                const doorHeight = 30;
+                const doorX = x + (HOUSE_WIDTH - doorWidth) / 2;
+                const doorY = GROUND_Y - doorHeight;          // door sits on ground
+                ctx.strokeRect(doorX, doorY, doorWidth, doorHeight);
+
+                // Draw window (small square)
+                const windowSize = 15;
+                const windowX = x + 10;
+                const windowY = baseTopY + 15;
+                ctx.strokeRect(windowX, windowY, windowSize, windowSize);
+                // cross in window
+                ctx.beginPath();
+                ctx.moveTo(windowX, windowY);
+                ctx.lineTo(windowX + windowSize, windowY + windowSize);
+                ctx.moveTo(windowX + windowSize, windowY);
+                ctx.lineTo(windowX, windowY + windowSize);
+                ctx.stroke();
+
+                // Update state
+                lastHouseX = x;
+            }
+
+            /**
+             * Draw a simple car under the last house (uses lastHouseX).
+             * If no house has been drawn, do nothing.
+             */
+            function drawCar() {
+                if (lastHouseX === null) {
+                    console.log("No house yet — draw a house first (button 2)");
+                    return;
+                }
+
+                // Car dimensions
+                const carWidth = 50;
+                const carHeight = 25;
+                const wheelRadius = 6;
+
+                // Position car under the house: align roughly with house's left side, slightly to the right for balance
+                const carX = lastHouseX + (HOUSE_WIDTH - carWidth) / 2; // center under house
+                const carY = GROUND_Y + 5; // just below ground line
+
+                ctx.strokeStyle = 'black';
+                ctx.lineWidth = 2;
+
+                // Car body (rectangle)
+                ctx.strokeRect(carX, carY, carWidth, carHeight);
+
+                // Roof (smaller rectangle on top)
+                const roofWidth = 30;
+                const roofHeight = 15;
+                const roofX = carX + (carWidth - roofWidth) / 2;
+                const roofY = carY - roofHeight;
+                ctx.strokeRect(roofX, roofY, roofWidth, roofHeight);
+
+                // Wheels (circles)
+                ctx.beginPath();
+                // left wheel
+                ctx.arc(carX + 10, carY + carHeight, wheelRadius, 0, 2 * Math.PI);
+                ctx.stroke();
+                ctx.beginPath();
+                // right wheel
+                ctx.arc(carX + carWidth - 10, carY + carHeight, wheelRadius, 0, 2 * Math.PI);
+                ctx.stroke();
+            }
+
+            /**
+             * Draw a star at (x, y) with given size and fill color.
+             * Star is a classic 5-pointed star using lines.
+             */
+            function drawStar(x, y, size, color) {
+                ctx.fillStyle = color;
+                ctx.strokeStyle = 'black';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+
+                // 5 points outer, 5 inner to create the star shape
+                let points = 5;
+                let outerRadius = size;
+                let innerRadius = size * 0.4;
+                for (let i = 0; i < points * 2; i++) {
+                    let radius = i % 2 === 0 ? outerRadius : innerRadius;
+                    let angle = (Math.PI / points) * i - Math.PI / 2; // start from top
+                    let dx = Math.cos(angle) * radius;
+                    let dy = Math.sin(angle) * radius;
+                    if (i === 0) {
+                        ctx.moveTo(x + dx, y + dy);
+                    } else {
+                        ctx.lineTo(x + dx, y + dy);
+                    }
+                }
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke(); // optional outline
+            }
+
+            // Button Handlers
+            // Get all buttons
+            const buttons = document.querySelectorAll('input[type="button"]');
+
+            // Button 1 (index 0) – no functionality (can be ignored)
+            // Button 2 (index 1) – draw house
+            buttons[1].addEventListener('click', function () {
+                // Check if next house still fits (optional, but prevents drawing off-canvas)
+                if (nextHouseX + HOUSE_WIDTH <= canvas.width) {
+                    drawHouse(nextHouseX);
+                    // Update next house position (add width + gap)
+                    nextHouseX += HOUSE_WIDTH + 10; // 10px gap between houses
+                } else {
+                    console.log("No space left for another house!");
+                }
+            });
+
+            // Button 3 (index 2) – draw car under last house
+            buttons[2].addEventListener('click', function () {
+                drawCar();
+            });
+
+            // Button 4 (index 3) – draw random star in sky
+            buttons[3].addEventListener('click', function () {
+                // Sky region: above the highest house roof (~210) and ground line (300)
+                // Let's define sky as y from 20 to 200
+                const skyMinY = 20;
+                const skyMaxY = 200;
+                const randomX = Math.random() * canvas.width;
+                const randomY = skyMinY + Math.random() * (skyMaxY - skyMinY);
+                // Random bright color (hsl for vivid colors)
+                const hue = Math.floor(Math.random() * 360);
+                const color = `hsl(${hue}, 90%, 65%)`; // bright, saturated
+                // Star size between 8 and 15
+                const size = 8 + Math.random() * 10;
+                drawStar(randomX, randomY, size, color);
+            });
+
+            // Optional: style console message
+            console.log("Ready! Use buttons to build a night scene: house (btn2), car (btn3), star (btn4)");
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Canvas Test Bed 4</h1>
+    <canvas id="testCanvas" width="400" height="400"></canvas>
+    <br>
+    <input type="button" value="Button 1">
+    <input type="button" value="Button 2">
+    <input type="button" value="Button 3">
+    <input type="button" value="Button 4">
+</body>
+
+</html>
